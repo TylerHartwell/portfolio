@@ -1,101 +1,80 @@
-import Image from "next/image";
+import Footer from "@/components/Footer"
+import Header from "@/components/Header"
+import Image from "next/image"
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      {/* <div className="w-full h-8 bg-slate-400"></div> */}
+      <Header />
+      <main
+        style={{
+          backgroundImage: 'url("https://s.w.org/images/core/5.8/forest.jpg")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed"
+        }}
+        className="bg-slate-50 text-yellow-300 relative flex-grow flex"
+      >
+        <div className="absolute w-full h-full bg-black opacity-60 "></div>
+        <section
+          id="home"
+          className="relative mx-auto my-6 flex flex-col md:flex-row gap-6 justify-center items-center p-6  w-[90%] md:w-[80%] min-h-[80%] border-orange-600 border-2"
+        >
+          <div className="b1 flex flex-col justify-between h-full max-h-[400px] min-h-min min-w-min items-center md:items-start md:flex-grow-0 md:max-w-[40%]">
+            <h2 className="b1 text-3xl md:text-6xl text-center md:text-left">Tyler Hartwell</h2>
+            <ul className="b1 flex flex-col gap-6 md:ml-12 my-6 text-nowrap">
+              <li>
+                <a href="https://github.com/TylerHartwell" className="underline">
+                  github.com/TylerHartwell
+                </a>
+              </li>
+              <li>tharwell37@gmail.com</li>
+              <li>
+                <a href="https://www.linkedin.com/in/tyler-hartwell/" className="underline ">
+                  linkedin.com/in/tyler-hartwell
+                </a>
+              </li>
+            </ul>
+            <p className="b1 text-xl w-auto">
+              Hey, I&apos;m Tyler! I&apos;m a fullstack software developer creating useful and intuitive experiences.
+            </p>
+          </div>
+          <div className="b1 flex flex-col justify-between min-h-min  items-center min-w-min md:flex-grow">
+            <h1 className="b1 text-3xl self-center py-2 text-stone-300 font-bold text-center mb-2">Most Recent Projects</h1>
+            <div className="b1 flex flex-col gap-4 py-4">
+              <div className="b1 flex items-center">
+                <div className="w-[50%] sm:w-[200px] relative ">
+                  <Image
+                    src="https://tylerhartwell.com/wp-content/uploads/2024/05/putitonthelist_landscape.png"
+                    alt="screenshot of project"
+                    width={1092}
+                    height={757}
+                    className="rounded-2xl max-w-full h-auto"
+                  />
+                </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+                <p className="b1 pl-4 text-2xl sm:text-4xl flex-1">Put It On The List more padding</p>
+              </div>
+
+              <div className="b1 flex items-center">
+                <div className="w-[50%] sm:w-[200px] relative ">
+                  <Image
+                    src="https://tylerhartwell.com/wp-content/uploads/2024/05/putitonthelist_landscape.png"
+                    alt="screenshot of project"
+                    width={1092}
+                    height={757}
+                    style={{ maxWidth: "100%", height: "auto" }}
+                    className="rounded-2xl"
+                  />
+                </div>
+                <p className="pl-4 text-2xl sm:text-4xl flex-1">Sudoku Ruler</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      <Footer />
+    </>
+  )
 }
