@@ -6,7 +6,7 @@ export default function About() {
     <>
       <Header />
       <main className="flex-grow flex flex-col bg-zinc-700">
-        <section className="p-16 bg-slate-100 flex-1">
+        <section className="p-8 bg-slate-100 flex-1">
           <h2 className="text-center text-3xl pb-8">About</h2>
           <p>
             I&apos;m Tyler Hartwell, a fullstack software developer. I earned my degree in mechanical engineering and decided to make the transition
