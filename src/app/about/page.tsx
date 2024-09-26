@@ -21,14 +21,12 @@ export default function About() {
     <>
       <Header />
       <main className="flex-grow flex flex-col bg-zinc-700">
-        <section className="p-8 bg-slate-100 flex-1">
+        <section className="p-8 bg-slate-100 flex-1 flex flex-col items-center">
           <h2 className="text-center text-3xl pb-8">About</h2>
-          <p>
-            I&apos;m Tyler Hartwell, a fullstack software developer. I earned my degree in mechanical engineering and decided to make the transition
-            into the software engineering field where I find more freedom to exercise creative problem solving and make effective and enjoyable user
-            experiences. This site is just a simple avenue to display some of the projects I&apos;ve worked on. It&apos;s currently being used as an
-            explorative development sandbox and is likely to be in a perpetually unfinished or broken state as I continuously learn different
-            technologies, platforms, and methodologies.
+          <p className="max-w-[1000px] indent-6">
+            I&apos;m Tyler Hartwell, a fullstack software developer. I have a background in mechanical engineering and decided to make the transition
+            into software engineering where I find more freedom to exercise creative problem solving and make effective and enjoyable user
+            experiences. Here you can see some of the projects I&apos;ve worked on and learn about the problems I solved during their creation.
           </p>
         </section>
         <section className="p-8 bg-slate-100 flex-1">
@@ -40,7 +38,7 @@ export default function About() {
               return (
                 <span key={index} className="relative flex place-items-center w-max group">
                   <IconComponent size="3em" />
-                  <span className="absolute group-hover:block top-[105%] left-full bg-black text-white rounded-lg rounded-tl-none px-2 whitespace-nowrap transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                  <span className="absolute group-hover:block top-[105%] left-full bg-black text-white text-sm rounded-lg rounded-tl-none px-2 whitespace-nowrap transition-opacity duration-300 opacity-0 group-hover:opacity-100">
                     {icon.title}
                   </span>
                 </span>

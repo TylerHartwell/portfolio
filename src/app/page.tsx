@@ -12,7 +12,7 @@ export default function Home() {
       <Header />
       <main
         style={{
-          backgroundImage: 'url("https://s.w.org/images/core/5.8/forest.jpg")',
+          backgroundImage: 'url("/images/forest.jpg")',
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed"
@@ -22,9 +22,9 @@ export default function Home() {
         <div className="absolute w-full h-full bg-black opacity-60 "></div>
         <section
           id="home"
-          className="relative mx-auto my-6 flex flex-col md:flex-row gap-12 md:gap-6 md:justify-center items-start p-6  w-[90%] min-h-[80%]"
+          className="relative mx-auto my-6 flex flex-col md:flex-row gap-12 md:gap-6 md:justify-center items-center md:items-start md:p-6  w-[90%] min-h-[80%]"
         >
-          <div className="flex flex-col self-start gap-6 justify-start md:justify-between h-full max-h-[300px] md:max-h-[400px] min-h-min min-w-min items-center m-6 md:items-start md:flex-grow-0 md:max-w-[40%]">
+          <div className="flex flex-col md:self-start gap-6 justify-start md:justify-between h-max  min-h-min min-w-min items-center m-6 md:items-start md:flex-grow-0 md:max-w-[40%]">
             <h2 className="text-4xl md:text-6xl text-center md:text-left">Tyler Hartwell</h2>
             <ul className="flex flex-col items-center md:items-start gap-6 md:ml-12 text-nowrap">
               <li>

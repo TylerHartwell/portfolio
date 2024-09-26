@@ -5,7 +5,15 @@ export default function RecentProject({ name, url, src }: { name: string; url: s
     <div className="flex items-center">
       <div className="w-[50%] min-w-[100px] max-w-[200px] sm:w-[200px] relative ">
         <a href={url} target="_blank">
-          <Image src={src} alt="screenshot of project" width={1092} height={757} className="rounded-2xl max-w-full h-auto" priority />
+          <Image
+            src={src}
+            alt="screenshot of project"
+            title={`screenshot of ${name} project`}
+            width={1092}
+            height={757}
+            className="rounded-2xl max-w-full h-auto"
+            priority
+          />
         </a>
       </div>
 
