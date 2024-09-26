@@ -18,9 +18,8 @@ export default function Blog() {
             />
             <BlogPost
               title="Post Title"
-              date="yesterday"
-              content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet enim ipsa ut quibusdam ab deserunt repellendus omnis nesciunt
-                laboriosam animi adipisci quis maxime, inventore quia dolore delectus aliquid voluptatibus libero?"
+              date="2024-09-26"
+              content="On my blog page I was having trouble scaling the scroll-to-top svg icon and its surrounding button on hover without it becoming blurry. I found one technique that involved scaling down the default size and then normalizing it on hover but it did not work for me. My alternative to transform scaling was to change the width and height with the size property instead, which solved the blurriness issue but caused the icon to grow up and left instead of from its center since it is fixed and anchored near the bottom and right of the screen. So I wrapped the button in a div, fixed the position of the div to the bottom right instead of the button, and then centered the button in the div so that changes to its size would let it grow from the center. But then I realized I didn't need the extra wrapper div and could just translate the button by half of its width and height in order for everything to work. I was able to solve my problem quickly with an overcomplicated workaround and then simplify it soon after."
             />
             <BlogPost
               title="Post Title"
