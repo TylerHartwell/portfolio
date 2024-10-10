@@ -1,6 +1,20 @@
 import Image from "next/image"
 
-export default function Project({ name, url, src, desc }: { name: string; url: string; src: string; desc: string }) {
+export default function Project({
+  name,
+  url,
+  src,
+  desc,
+  width,
+  height
+}: {
+  name: string
+  url: string
+  src: string
+  desc: string
+  width: number
+  height: number
+}) {
   return (
     <div className="flex flex-col gap-4 py-4">
       <hr className="border-zinc-900" />
@@ -10,7 +24,7 @@ export default function Project({ name, url, src, desc }: { name: string; url: s
       <p>{desc}</p>
       <div className="relative ">
         <a href={url} target="_blank">
-          <Image src={src} alt="screenshot of project" width={1092} height={757} className="rounded-2xl max-w-full h-auto" priority />
+          <Image src={src} alt="screenshot of project" width={width} height={height} className="rounded-2xl max-w-full h-auto" priority />
         </a>
       </div>
       <hr className="border-zinc-900" />

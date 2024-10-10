@@ -18,6 +18,8 @@ export default function Projects() {
                 desc="Put It On The List A collaborative and anonymous list management application. How does it work? Users can keep a private list cloud-hosted in
                       a Firebase Realtime Database. Lists can be shared to make public and collaborative while maintaining anonymity of users who can leave or join
                       at will with a provided group ID."
+                width={1092}
+                height={757}
               />
             </div>
 
@@ -27,8 +29,10 @@ export default function Projects() {
               <Project
                 name="Sudoku Ruler"
                 url="https://sudoku.tylerhartwell.com/"
-                src="/images/sudoku_ruler_screenshot.PNG"
+                src="/images/sudoku_project.png"
                 desc="A sudoku solving assistant that lets you selectively skip manually resolving the easy and tedious patterns and focus only on the tougher ones you want to."
+                width={894}
+                height={614}
               />
             </div>
           </div>
