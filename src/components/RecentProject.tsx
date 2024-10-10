@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-export default function RecentProject({ name, url, src }: { name: string; url: string; src: string }) {
+export default function RecentProject({ name, url, src, width, height }: { name: string; url: string; src: string; width: number; height: number }) {
   return (
     <div className="flex items-center">
       <div className="w-[50%] min-w-[100px] max-w-[200px] sm:w-[200px] relative ">
@@ -9,8 +9,8 @@ export default function RecentProject({ name, url, src }: { name: string; url: s
             src={src}
             alt="screenshot of project"
             title={`screenshot of ${name} project`}
-            width={1092}
-            height={757}
+            width={width}
+            height={height}
             className="rounded-2xl max-w-full h-auto"
             priority
           />

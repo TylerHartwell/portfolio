@@ -65,8 +65,14 @@ export default function Home() {
           <div className="flex flex-col min-h-min items-center min-w-min md:flex-grow">
             <h1 className="text-3xl self-center py-2 text-stone-300 font-bold text-center ">Most Recent Projects</h1>
             <div className="flex flex-col gap-4">
-              <RecentProject name="Put It On The List" url="https://putitonthelist.netlify.app/" src="/images/putitonthelist_landscape.png" />
-              <RecentProject name="Sudoku Ruler" url="https://sudoku.tylerhartwell.com/" src="/images/sudoku_ruler_screenshot.png" />
+              <RecentProject
+                name="Put It On The List"
+                url="https://putitonthelist.netlify.app/"
+                src="/images/putitonthelist_landscape.png"
+                width={1092}
+                height={757}
+              />
+              <RecentProject name="Sudoku Ruler" url="https://sudoku.tylerhartwell.com/" src="/images/sudoku_project.png" width={894} height={614} />
             </div>
           </div>
         </section>
