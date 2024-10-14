@@ -1,6 +1,7 @@
-import { PortableText, type SanityDocument } from "next-sanity"
+import { type SanityDocument } from "next-sanity"
 import { client } from "@/sanity/client"
 import Link from "next/link"
+import BlogPost from "@/components/BlogPost"
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`
 
@@ -15,11 +16,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
         <Link href="/blog" className="hover:underline">
           ← Back to posts
         </Link>
-        <h1 className="text-4xl font-bold mb-8">{post.title}</h1>
-        <div className="prose">
-          <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p>
-          {Array.isArray(post.body) && <PortableText value={post.body} />}
-        </div>
+        <BlogPost title={post.title} date={new Date(post.publishedAt).toLocaleDateString("en-CA")} body={post.body} />
       </main>
     </>
   )

@@ -1,8 +1,17 @@
-export default function BlogPost({ title, date }: { title: string; date: string }) {
+import { PortableText, PortableTextBlock } from "next-sanity"
+
+interface Props {
+  title: string
+  date: string
+  body: PortableTextBlock[]
+}
+
+export default function BlogPost({ title, date, body }: Props) {
   return (
-    <div className="flex flex-col gap-2 py-4">
-      <h2 className="text-3xl font-bold">{title}</h2>
-      <span className="text-sm italic pl-4">{date}</span>
-    </div>
+    <>
+      <h1 className="text-4xl font-bold">{title}</h1>
+      <p className="text-sm">Published: {date}</p>
+      <div className="">{Array.isArray(body) && <PortableText value={body} />}</div>
+    </>
   )
 }

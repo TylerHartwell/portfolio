@@ -1,4 +1,4 @@
-import BlogPost from "@/components/BlogPost"
+import BlogPostSample from "@/components/BlogPostSample"
 import ScrollToTop from "@/components/ScrollToTop"
 import { type SanityDocument } from "next-sanity"
 import { client } from "@/sanity/client"
@@ -7,7 +7,7 @@ import Link from "next/link"
 const POSTS_QUERY = `*[
   _type == "post"
   && defined(slug.current)
-]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`
+]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt, body}`
 
 const options = { next: { revalidate: 30 } }
 
@@ -20,7 +20,7 @@ export default async function Blog() {
           <main className="p-8 flex-1 flex flex-col gap-8">
             {posts.map(post => (
               <Link href={`/blog/${post.slug.current}`} key={post._id}>
-                <BlogPost title={post.title} date={new Date(post.publishedAt).toLocaleDateString()} />
+                <BlogPostSample title={post.title} date={new Date(post.publishedAt).toLocaleDateString("en-CA")} />
               </Link>
             ))}
           </main>
