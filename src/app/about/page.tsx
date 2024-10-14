@@ -1,5 +1,3 @@
-import Footer from "@/components/Footer"
-import Header from "@/components/Header"
 import { FaReact, FaCss3Alt, FaGitAlt } from "react-icons/fa"
 import { TiHtml5 } from "react-icons/ti"
 import { RiTailwindCssFill, RiNextjsFill } from "react-icons/ri"
@@ -19,7 +17,6 @@ const techIcons = [
 export default function About() {
   return (
     <>
-      <Header />
       <main className="flex-grow flex flex-col bg-zinc-700">
         <section className="p-8 bg-slate-100 flex-1 flex flex-col items-center">
           <h2 className="text-center text-3xl pb-8">About</h2>
@@ -47,7 +44,6 @@ export default function About() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   )
 }

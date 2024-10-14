@@ -4,9 +4,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "tylerhartwell.com",
+        hostname: "cdn.sanity.io",
         port: "",
-        pathname: "/wp-content/uploads/**"
+        pathname: "/images/uv1fpmpl/production/**"
       }
     ]
   }

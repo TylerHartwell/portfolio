@@ -1,5 +1,3 @@
-import Footer from "@/components/Footer"
-import Header from "@/components/Header"
 import RecentProject from "@/components/RecentProject"
 import { FaGithub, FaLinkedin } from "react-icons/fa"
 import { FaFilePdf, FaArrowRight } from "react-icons/fa6"
@@ -8,8 +6,6 @@ import { MdEmail } from "react-icons/md"
 export default function Home() {
   return (
     <>
-      {/* <div className="w-full h-8 bg-slate-400"></div> */}
-      <Header />
       <main
         style={{
           backgroundImage: 'url("/images/forest.jpg")',
@@ -28,7 +24,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-6xl text-center md:text-left">Tyler Hartwell</h2>
             <ul className="flex flex-col items-center md:items-start gap-6 md:ml-12 text-nowrap">
               <li>
-                <a href="https://github.com/TylerHartwell" className="underline flex gap-2 items-center">
+                <a href="https://github.com/TylerHartwell" target="_blank" className="underline flex gap-2 items-center">
                   <FaGithub color="white" title="github icon" />
                   github.com/TylerHartwell
                 </a>
@@ -40,7 +36,7 @@ export default function Home() {
                 </div>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/tyler-hartwell/" className="underline flex gap-2 items-center">
+                <a href="https://www.linkedin.com/in/tyler-hartwell/" target="_blank" className="underline flex gap-2 items-center">
                   <FaLinkedin color="white" title="linkedin icon" />
                   linkedin.com/in/tyler-hartwell
                 </a>
@@ -77,7 +73,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   )
 }

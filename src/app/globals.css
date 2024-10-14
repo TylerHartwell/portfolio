@@ -27,5 +27,11 @@ body {
 }
 
 .b1 {
-  border: 1px solid green;
+  border: 5px solid red;
+}
+.b2 {
+  border: 5px solid green;
+}
+.b3 {
+  border: 5px solid blue;
 }

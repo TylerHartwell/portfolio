@@ -1,11 +1,8 @@
-import Footer from "@/components/Footer"
-import Header from "@/components/Header"
 import Project from "@/components/Project"
 
-export default function Projects() {
+export default async function Projects() {
   return (
     <>
-      <Header />
       <main className="flex-grow flex flex-col bg-zinc-700">
         <section className="px-2 py-8 md:px-16 bg-slate-100 flex-1">
           <h2 className="text-center text-3xl pb-4">Projects</h2>
@@ -14,7 +11,7 @@ export default function Projects() {
               <Project
                 name="Put It On The List"
                 url="https://putitonthelist.netlify.app/"
-                src="https://tylerhartwell.com/wp-content/uploads/2024/05/putitonthelist_landscape.png"
+                src="/images/putitonthelist_landscape.png"
                 desc="Put It On The List A collaborative and anonymous list management application. How does it work? Users can keep a private list cloud-hosted in
                       a Firebase Realtime Database. Lists can be shared to make public and collaborative while maintaining anonymity of users who can leave or join
                       at will with a provided group ID."
@@ -38,7 +35,6 @@ export default function Projects() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   )
 }
