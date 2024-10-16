@@ -1,7 +1,7 @@
 import ScrollToTop from "@/components/ScrollToTop"
 import { type SanityDocument } from "next-sanity"
 import { client } from "@/sanity/client"
-import BlogSampleResults from "@/components/BlogSampleResults"
+import BlogSampleResults from "./BlogSampleResults"
 
 const POSTS_QUERY = `*[
   _type == "post"

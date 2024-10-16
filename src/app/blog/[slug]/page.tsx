@@ -1,7 +1,7 @@
 import { type SanityDocument } from "next-sanity"
 import { client } from "@/sanity/client"
 import Link from "next/link"
-import BlogPost from "@/components/BlogPost"
+import BlogPost from "@/app/blog/BlogPost"
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`
 

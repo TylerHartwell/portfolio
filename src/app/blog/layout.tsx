@@ -1,4 +1,4 @@
-import BlogNav from "@/components/BlogNav"
+import BlogNav from "@/app/blog/BlogNav"
 import "../globals.css"
 
 export default function BlogLayout({

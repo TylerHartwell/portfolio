@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import BlogPostSample from "./BlogPostSample"
+import BlogPostSample from "@/app/blog/BlogPostSample"
 import { useState } from "react"
 import { PortableText, SanityDocument } from "next-sanity"
 
