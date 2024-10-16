@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="16" height="16"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+<path d="M0 0 C3.3 0 6.6 0 10 0 C10 1.32 10 2.64 10 4 C11.32 4 12.64 4 14 4 C14 2.68 14 1.36 14 0 C14.66 0 15.32 0 16 0 C16 3.3 16 6.6 16 10 C15.34 10 14.68 10 14 10 C14 8.68 14 7.36 14 6 C12.68 6 11.36 6 10 6 C10 7.32 10 8.64 10 10 C9.34 10 8.68 10 8 10 C8 7.36 8 4.72 8 2 C7.01 2 6.02 2 5 2 C5 4.64 5 7.28 5 10 C4.34 10 3.68 10 3 10 C3 7.36 3 4.72 3 2 C2.01 2 1.02 2 0 2 C0 1.34 0 0.68 0 0 Z " fill="#0084FF" transform="translate(0,3)"></path>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>
