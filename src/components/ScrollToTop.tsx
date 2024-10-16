@@ -33,8 +33,8 @@ export default function ScrollToTop() {
         title="scroll to top"
       >
         <FaAngleUp
-          size="1.5em"
-          className="rounded-full hover:size-[1.9em] transition-w transition-h ease-linear border-2 border-black border-opacity-50"
+          size="2em"
+          className="rounded-full hover:size-[2.5em] transition-w transition-h ease-linear border-2 border-black border-opacity-50"
         />
       </button>
     )

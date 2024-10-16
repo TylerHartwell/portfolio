@@ -11,7 +11,7 @@ export default function BlogPost({ title, date, body }: Props) {
     <>
       <h1 className="text-4xl font-bold">{title}</h1>
       <p className="text-sm">Published: {date}</p>
-      <div className="">{Array.isArray(body) && <PortableText value={body} />}</div>
+      <div>{Array.isArray(body) && <PortableText value={body} />}</div>
     </>
   )
 }

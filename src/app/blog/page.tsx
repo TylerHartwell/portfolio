@@ -1,8 +1,7 @@
-import BlogPostSample from "@/components/BlogPostSample"
 import ScrollToTop from "@/components/ScrollToTop"
 import { type SanityDocument } from "next-sanity"
 import { client } from "@/sanity/client"
-import Link from "next/link"
+import BlogSampleResults from "@/components/BlogSampleResults"
 
 const POSTS_QUERY = `*[
   _type == "post"
@@ -13,18 +12,11 @@ const options = { next: { revalidate: 30 } }
 
 export default async function Blog() {
   const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options)
+
   return (
     <>
-      <div className="flex-grow flex flex-col bg-zinc-700">
-        <div className="flex flex-col-reverse md:flex-row flex-1 bg-slate-100">
-          <main className="p-8 flex-1 flex flex-col gap-8">
-            {posts.map(post => (
-              <Link href={`/blog/${post.slug.current}`} key={post._id}>
-                <BlogPostSample title={post.title} date={new Date(post.publishedAt).toLocaleDateString("en-CA")} />
-              </Link>
-            ))}
-          </main>
-        </div>
+      <div className="w-full flex bg-zinc-700">
+        <BlogSampleResults posts={posts} />
       </div>
       <ScrollToTop />
     </>

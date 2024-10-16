@@ -17,8 +17,8 @@ const techIcons = [
 export default function About() {
   return (
     <>
-      <main className="flex-grow flex flex-col bg-zinc-700">
-        <section className="p-8 bg-slate-100 flex-1 flex flex-col items-center">
+      <main className="flex-grow flex flex-col justify-start bg-zinc-700">
+        <section className="p-8 bg-slate-100 flex flex-col items-center">
           <h2 className="text-center text-3xl pb-8">About</h2>
           <p className="max-w-[1000px] indent-6">
             I&apos;m Tyler Hartwell, a fullstack software developer. I have a background in mechanical engineering and decided to make the transition
@@ -34,8 +34,8 @@ export default function About() {
 
               return (
                 <span key={index} className="relative flex place-items-center w-max group">
-                  <IconComponent size="3em" />
-                  <span className="absolute group-hover:block top-[105%] left-full bg-black text-white text-sm rounded-lg rounded-tl-none px-2 whitespace-nowrap transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                  <IconComponent size="4em" />
+                  <span className="absolute hidden sm:block sm:invisible sm:group-hover:visible top-[105%] left-full bg-black text-white text-sm rounded-lg rounded-tl-none px-2 whitespace-nowrap transition-opacity duration-300 opacity-0 group-hover:opacity-100">
                     {icon.title}
                   </span>
                 </span>

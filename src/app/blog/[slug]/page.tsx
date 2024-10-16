@@ -12,7 +12,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
 
   return (
     <>
-      <main className="mx-auto max-w-3xl p-8 flex flex-col gap-4">
+      <main className="mx-auto  p-8 flex flex-col gap-4 flex-grow bg-slate-100">
         <Link href="/blog" className="hover:underline">
           ← Back to posts
         </Link>

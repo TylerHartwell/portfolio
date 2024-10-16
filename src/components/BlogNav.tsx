@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function BlogNav() {
   return (
-    <aside className="relative bg-neutral-200 w-full md:w-[200px] h-24 md:h-auto">
+    <aside className="md:fixed md:right-0 md:top-[4.5rem] relative bg-neutral-200 w-full md:w-[200px] h-24 md:h-full">
       <Image
         src="/images/forest.jpg"
         alt="Forest background"

@@ -19,6 +19,9 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+.post-content {
+  text-indent: 2em;
+}
 
 @layer utilities {
   .text-balance {
