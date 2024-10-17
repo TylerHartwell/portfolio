@@ -1,4 +1,3 @@
-import ScrollToTop from "@/components/ScrollToTop"
 import { type SanityDocument } from "next-sanity"
 import { client } from "@/sanity/client"
 import BlogSampleResults from "./BlogSampleResults"
@@ -15,10 +14,9 @@ export default async function Blog() {
 
   return (
     <>
-      <div className="w-full flex bg-zinc-700">
+      <div className="w-full flex flex-col md:flew-row bg-zinc-700 flex-1">
         <BlogSampleResults posts={posts} />
       </div>
-      <ScrollToTop />
     </>
   )
 }
