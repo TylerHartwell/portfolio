@@ -2,15 +2,18 @@ import Image from "next/image"
 
 export default function BlogNav() {
   return (
-    <aside className="md:fixed md:right-0 md:top-[4.5rem] relative bg-neutral-200 w-full md:w-[200px] h-24 md:h-full">
-      <Image
-        src="/images/forest.jpg"
-        alt="Forest background"
-        className="object-cover"
-        fill={true}
-        priority
-        sizes="(max-width: 768px) 300px, 1000px"
-      />
+    <aside className="relative bg-neutral-200 w-full md:w-[200px] h-24 md:h-auto">
+      <div className="absolute h-full w-full">
+        <Image
+          src="/images/forest.jpg"
+          alt="bg-image"
+          width={2560}
+          height={1495}
+          priority
+          sizes="(max-width: 768px) 300px, 1000px"
+          className="object-cover h-full w-full"
+        />
+      </div>
       <div className="relative z-10 w-full h-full flex md:flex-col justify-center md:justify-start items-center py-4 bg-transparent gap-6">
         <div className="flex flex-col md:flex-row w-min p-1 place-items-center gap-1 bg-opacity-20">
           <input name="search" type="text" size={8} className="h-min px-1" />

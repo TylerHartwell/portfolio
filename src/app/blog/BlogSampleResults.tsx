@@ -6,7 +6,7 @@ import { useMemo, useRef, useState } from "react"
 import { PortableText, SanityDocument } from "next-sanity"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 
-export default function BlogSampleResults({ posts = [], perPage = 5 }: { posts?: SanityDocument[]; perPage?: number }) {
+export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?: SanityDocument[]; perPage?: number }) {
   const [selectedPost, setSelectedPost] = useState<SanityDocument | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -43,7 +43,7 @@ export default function BlogSampleResults({ posts = [], perPage = 5 }: { posts?:
 
   return (
     <main className="w-full flex flex-col md:flex-row bg-slate-100 relative h-full flex-1">
-      <div className=" flex flex-col w-full md:w-1/3 min-h-fit h-full  flex-1 md:flex-initial bg-slate-100">
+      <div className="flex flex-col w-full md:w-1/3 min-h-fit h-full  flex-1 md:flex-initial bg-slate-100">
         {paginatedPosts.map(post => (
           <Link
             href={`/blog/${post.slug.current}`}
@@ -54,9 +54,9 @@ export default function BlogSampleResults({ posts = [], perPage = 5 }: { posts?:
             <BlogPostSample title={post.title} date={new Date(post.publishedAt).toLocaleDateString("en-CA")} />
           </Link>
         ))}
-        <div className="bg-slate-200 w-full flex-1"></div>
+        <div className="bg-slate-200 w-full relative flex-1"></div>
         {totalPages > 1 && (
-          <div className=" flex justify-between items-center mt-auto bg-slate-200 border-slate-300 border-2">
+          <div className=" flex justify-between items-center mt-auto bg-slate-200 border-slate-300 border-2 sticky top-[200px]">
             <button onClick={handlePrevPage} disabled={currentPage === 1} className="flex-1">
               <FaChevronLeft className={`h-10 w-10 ${currentPage === 1 && "text-gray-400"}`} />
             </button>
@@ -68,9 +68,9 @@ export default function BlogSampleResults({ posts = [], perPage = 5 }: { posts?:
         )}
       </div>
 
-      <div className="hidden  w-2/3  md:flex flex-col overflow-y-auto h-full grow-0 absolute left-1/3" ref={scrollableRef}>
+      <div className="hidden md:flex w-2/3 h-full relative ">
         {selectedPost ? (
-          <div className=" py-10 px-6">
+          <div className=" py-10 px-6 w-full sticky self-start top-[4.5rem] overflow-y-auto max-h-[calc(100vh-4.5rem-48px)]" ref={scrollableRef}>
             <h1 className="text-4xl font-bold">{selectedPost?.title}</h1>
             <span className="text-sm my-4 inline-block text-black text-opacity-50">
               Published: {new Date(selectedPost.publishedAt).toLocaleDateString("en-CA")}
@@ -78,7 +78,7 @@ export default function BlogSampleResults({ posts = [], perPage = 5 }: { posts?:
             <div className="flex flex-col gap-2 indent-8">{Array.isArray(selectedPost?.body) && <PortableText value={selectedPost.body} />}</div>
           </div>
         ) : (
-          <div className="text-center mt-80">Hover or select a post</div>
+          <div className="text-center m-auto">Hover a post for a preview</div>
         )}
       </div>
     </main>

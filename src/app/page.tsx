@@ -2,19 +2,18 @@ import RecentProject from "@/components/RecentProject"
 import { FaGithub, FaLinkedin } from "react-icons/fa"
 import { FaFilePdf, FaArrowRight } from "react-icons/fa6"
 import { MdEmail } from "react-icons/md"
+import Image from "next/image"
+import forest from "/public/images/forest.jpg"
+import project1 from "/public/images/putitonthelist_landscape.png"
+import project2 from "/public/images/sudoku_project.png"
 
 export default function Home() {
   return (
     <>
-      <main
-        style={{
-          backgroundImage: 'url("/images/forest.jpg")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed"
-        }}
-        className="bg-slate-50 text-yellow-300 relative flex-grow flex"
-      >
+      <main className="bg-slate-50 text-yellow-300 relative flex-grow flex">
+        <div className="absolute h-full w-full">
+          <Image src={forest} alt="bg-image" width={2560} height={1495} priority className="object-cover h-full w-full" />
+        </div>
         <div className="absolute w-full h-full bg-black opacity-60 "></div>
         <section
           id="home"
@@ -61,14 +60,8 @@ export default function Home() {
           <div className="flex flex-col min-h-min items-center min-w-min md:flex-grow">
             <h1 className="text-3xl self-center py-2 text-stone-300 font-bold text-center ">Most Recent Projects</h1>
             <div className="flex flex-col gap-4">
-              <RecentProject
-                name="Put It On The List"
-                url="https://putitonthelist.netlify.app/"
-                src="/images/putitonthelist_landscape.png"
-                width={1092}
-                height={757}
-              />
-              <RecentProject name="Sudoku Ruler" url="https://sudoku.tylerhartwell.com/" src="/images/sudoku_project.png" width={894} height={614} />
+              <RecentProject name="Put It On The List" url="https://putitonthelist.netlify.app/" src={project1.src} width={1092} height={757} />
+              <RecentProject name="Sudoku Ruler" url="https://sudoku.tylerhartwell.com/" src={project2.src} width={894} height={614} />
             </div>
           </div>
         </section>
