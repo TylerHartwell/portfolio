@@ -4,10 +4,42 @@ import { FaFilePdf, FaArrowRight } from "react-icons/fa6"
 import { MdEmail } from "react-icons/md"
 import Image from "next/image"
 import forest from "/public/images/forest.jpg"
-import project1 from "/public/images/putitonthelist_landscape.png"
-import project2 from "/public/images/sudoku_project.png"
+import { client } from "@/sanity/client"
+import { SanityDocument } from "next-sanity"
+import { SanityImageSource } from "@sanity/image-url/lib/types/types"
+import imageUrlBuilder from "@sanity/image-url"
 
-export default function Home() {
+const PROJECTS_QUERY = `*[
+  _type == "project"
+]|order(publishedAt desc)[0...3]{
+  _id,
+  title,
+  summary,
+  url,
+  image {
+    asset -> {
+      _id,
+      url,
+      metadata {
+        dimensions {
+          width,
+          height
+        }
+      }
+    }
+  },
+  publishedAt,
+  blogSlug
+}`
+
+const { projectId, dataset } = client.config()
+const urlFor = (source: SanityImageSource) => (projectId && dataset ? imageUrlBuilder({ projectId, dataset }).image(source) : null)
+
+const options = { next: { revalidate: 30 } }
+
+export default async function Home() {
+  const projects = await client.fetch<SanityDocument[]>(PROJECTS_QUERY, {}, options)
+
   return (
     <>
       <main className="bg-slate-50 text-yellow-300 relative flex-grow flex">
@@ -60,8 +92,13 @@ export default function Home() {
           <div className="flex flex-col min-h-min items-center min-w-min md:flex-grow">
             <h1 className="text-3xl self-center py-2 text-stone-300 font-bold text-center ">Most Recent Projects</h1>
             <div className="flex flex-col gap-4">
-              <RecentProject name="Put It On The List" url="https://putitonthelist.netlify.app/" src={project1.src} width={1092} height={757} />
-              <RecentProject name="Sudoku Ruler" url="https://sudoku.tylerhartwell.com/" src={project2.src} width={894} height={614} />
+              {projects.map(project => {
+                const projectImage = project.image?.asset
+                const { width, height } = projectImage.metadata?.dimensions || { width: 1080, height: 920 }
+                const projectImageUrl = urlFor(project.image)?.width(width).height(height).url() || "/404"
+
+                return <RecentProject key={project._id} name={project.title} url={project.url} src={projectImageUrl} width={width} height={height} />
+              })}
             </div>
           </div>
         </section>
