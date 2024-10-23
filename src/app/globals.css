@@ -20,6 +20,95 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.post-content > p {
+  margin: 0 10px;
+}
+
+.post-content h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+  text-indent: 0%;
+}
+
+.post-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+  text-indent: 0%;
+  text-align: center;
+}
+
+.post-content h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+  text-indent: 0%;
+  text-align: center;
+}
+
+.post-content h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  text-indent: 0%;
+}
+
+.post-content h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  text-indent: 0%;
+}
+
+.post-content h6 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  text-indent: 0%;
+}
+
+.post-content > blockquote {
+  background-color: rgb(226 232 240);
+  border: 1px solid #999;
+  text-indent: 0;
+  width: 90%;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .post-content > blockquote {
+    width: 40vw;
+  }
+}
+.post-content > blockquote > br {
+  display: none;
+}
+.post-content > blockquote > code {
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
+  color: #003503;
+  line-height: 2em;
+  text-wrap: nowrap;
+  overflow-x: auto;
+  margin: 0 10px;
+  white-space: pre;
+}
+
+.post-content > ol,
+.post-content > ul {
+  margin: 0 calc(2rem + 10px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-indent: 0;
+}
+.post-content > ol > li,
+.post-content > ul > li {
+  list-style-type: none;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

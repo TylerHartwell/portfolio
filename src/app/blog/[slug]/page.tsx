@@ -13,7 +13,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
   return (
     <>
       <main className="mx-auto  p-8 flex flex-col gap-4 flex-grow bg-slate-100">
-        <Link href="/blog" className="hover:underline">
+        <Link href="/blog" className="w-max self-center hover:underline">
           ← Back to posts
         </Link>
         <BlogPost title={post.title} date={new Date(post.publishedAt).toLocaleDateString("en-CA")} body={post.body} />
