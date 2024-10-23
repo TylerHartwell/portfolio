@@ -76,7 +76,7 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
               }}
               onPointerEnter={e => {
                 e.preventDefault()
-                if (isHoverDevice.current) {
+                if (isHoverDevice.current && (e.pointerType == "mouse" || e.pointerType == "pen")) {
                   handlePointerEnter(post)
                 }
               }}
@@ -103,11 +103,11 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
       <div className="hidden xs:flex w-2/3 h-full relative ">
         {selectedPost ? (
           <div className="w-full sticky self-start top-[4.5rem] overflow-y-auto max-h-[calc(100vh-4.5rem)]" ref={scrollableRef}>
-            <h1 className="text-4xl font-bold">{selectedPost?.title}</h1>
-            <span className="text-sm my-4 inline-block text-black text-opacity-50">
+            <h1 className="pl-2 pt-2 text-4xl font-bold">{selectedPost?.title}</h1>
+            <span className="pl-2 text-sm my-4 inline-block text-black text-opacity-50">
               Published: {new Date(selectedPost.publishedAt).toLocaleDateString("en-CA")}
             </span>
-            <div className="post-content flex flex-col gap-2 indent-8 overflow-hidden">
+            <div className="post-content flex flex-col gap-2 indent-8 pb-2 overflow-hidden">
               {Array.isArray(selectedPost?.body) && <PortableText value={selectedPost.body} />}
             </div>
           </div>
