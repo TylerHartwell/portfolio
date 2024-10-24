@@ -21,7 +21,7 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
 
   useEffect(() => {
     const checkIsNarrow = () => {
-      setIsNarrow(window.innerWidth <= BREAKPOINT_XS)
+      setIsNarrow(window.innerWidth < BREAKPOINT_XS)
     }
 
     checkIsNarrow()
@@ -84,14 +84,11 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
               href={href}
               key={post._id}
               onClick={e => {
-                const isExtraSmallScreen = window.innerWidth < 460
-                if (!isHoverDevice.current) {
-                  e.preventDefault()
-                  if (!isSelected && !isExtraSmallScreen) {
-                    handleSelectPost(post)
-                  } else {
-                    router.push(href)
-                  }
+                e.preventDefault()
+                if (!isHoverDevice.current && !isSelected && !isNarrow) {
+                  handleSelectPost(post)
+                } else {
+                  router.push(href)
                 }
               }}
               onPointerEnter={e => {
@@ -107,7 +104,7 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
                   setHoveredPost(null)
                 }
               }}
-              className={`my-1 p-4 overflow-hidden  ${highlight ? "bg-slate-100" : "bg-slate-200"}`}
+              className={`my-1 p-4 overflow-hidden active:bg-slate-100  ${highlight ? "bg-slate-100" : "bg-slate-200"}`}
             >
               <BlogPostSample title={post.title} date={new Date(post.publishedAt).toLocaleDateString("en-CA")} />
             </Link>
