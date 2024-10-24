@@ -1,3 +1,4 @@
+import { BREAKPOINT_XS } from "./src/utils/breakpoints"
 import type { Config } from "tailwindcss"
 
 const config: Config = {
@@ -9,7 +10,7 @@ const config: Config = {
         foreground: "var(--foreground)"
       },
       screens: {
-        "xs": "460px"
+        "xs": `${BREAKPOINT_XS}px`
       }
     }
   },

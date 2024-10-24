@@ -6,15 +6,32 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { PortableText, SanityDocument } from "next-sanity"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { useRouter } from "next/navigation"
+import { BREAKPOINT_XS } from "@/utils/breakpoints"
 
 export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?: SanityDocument[]; perPage?: number }) {
   const router = useRouter()
   const [selectedPost, setSelectedPost] = useState<SanityDocument | null>(posts[0])
+  const [hoveredPost, setHoveredPost] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
 
   const scrollableRef = useRef<HTMLDivElement>(null)
 
   const isHoverDevice = useRef<boolean>(false)
+  const [isNarrow, setIsNarrow] = useState(false)
+
+  useEffect(() => {
+    const checkIsNarrow = () => {
+      setIsNarrow(window.innerWidth <= BREAKPOINT_XS)
+    }
+
+    checkIsNarrow()
+
+    window.addEventListener("resize", checkIsNarrow)
+
+    return () => {
+      window.removeEventListener("resize", checkIsNarrow)
+    }
+  }, [])
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -45,7 +62,7 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
     setCurrentPage(prev => Math.min(prev + 1, totalPages))
   }
 
-  const handlePointerEnter = (post: SanityDocument) => {
+  const handleSelectPost = (post: SanityDocument) => {
     if (selectedPost?._id !== post._id) {
       setSelectedPost(post)
       resetScroll()
@@ -58,6 +75,9 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
         {paginatedPosts.map(post => {
           const isSelected = selectedPost?._id === post._id
           const href = `/blog/${post.slug.current}`
+          const isHovered = isHoverDevice.current && hoveredPost === post._id
+
+          const highlight = isHovered || (isSelected && !isNarrow)
 
           return (
             <Link
@@ -68,7 +88,7 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
                 if (!isHoverDevice.current) {
                   e.preventDefault()
                   if (!isSelected && !isExtraSmallScreen) {
-                    handlePointerEnter(post)
+                    handleSelectPost(post)
                   } else {
                     router.push(href)
                   }
@@ -77,10 +97,17 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
               onPointerEnter={e => {
                 e.preventDefault()
                 if (isHoverDevice.current && (e.pointerType == "mouse" || e.pointerType == "pen")) {
-                  handlePointerEnter(post)
+                  handleSelectPost(post)
+                  setHoveredPost(post._id)
                 }
               }}
-              className={`my-1 p-4 overflow-hidden bg-slate-200 hover:bg-slate-100 ${isSelected && "xs:bg-slate-100"}`}
+              onPointerLeave={e => {
+                e.preventDefault()
+                if (isHoverDevice.current && (e.pointerType == "mouse" || e.pointerType == "pen")) {
+                  setHoveredPost(null)
+                }
+              }}
+              className={`my-1 p-4 overflow-hidden  ${highlight ? "bg-slate-100" : "bg-slate-200"}`}
             >
               <BlogPostSample title={post.title} date={new Date(post.publishedAt).toLocaleDateString("en-CA")} />
             </Link>
