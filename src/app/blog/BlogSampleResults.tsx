@@ -4,9 +4,9 @@ import Link from "next/link"
 import BlogPostSample from "@/app/blog/BlogPostSample"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { PortableText, SanityDocument } from "next-sanity"
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { useRouter } from "next/navigation"
 import { BREAKPOINT_XS } from "@/utils/breakpoints"
+import PaginationControls from "@/components/PaginationControls"
 
 export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?: SanityDocument[]; perPage?: number }) {
   const router = useRouter()
@@ -71,7 +71,10 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
 
   return (
     <main className="w-full flex flex-col xs:flex-row bg-slate-100 relative h-full flex-1">
-      <div className="flex flex-col w-full xs:w-auto min-h-fit h-full  flex-1  bg-slate-100">
+      <div className="flex flex-col w-full xs:w-auto min-h-[calc(100vh-4.5rem)] h-full  flex-1  bg-slate-100">
+        {totalPages > 1 && (
+          <PaginationControls currentPage={currentPage} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
+        )}
         {paginatedPosts.map(post => {
           const isSelected = selectedPost?._id === post._id
           const href = `/blog/${post.slug.current}`
@@ -83,24 +86,27 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
             <Link
               href={href}
               key={post._id}
-              onClick={e => {
+              onPointerDown={e => {
                 e.preventDefault()
-                if (!isHoverDevice.current && !isSelected && !isNarrow) {
-                  handleSelectPost(post)
-                } else {
+                console.log(e.button === 0)
+                if (e.pointerType !== "touch" || isSelected || isNarrow) {
                   router.push(href)
+                } else {
+                  handleSelectPost(post)
                 }
               }}
               onPointerEnter={e => {
                 e.preventDefault()
-                if (isHoverDevice.current && (e.pointerType == "mouse" || e.pointerType == "pen")) {
+                if (isHoverDevice.current && e.pointerType !== "touch") {
+                  console.log("enter")
                   handleSelectPost(post)
                   setHoveredPost(post._id)
                 }
               }}
               onPointerLeave={e => {
                 e.preventDefault()
-                if (isHoverDevice.current && (e.pointerType == "mouse" || e.pointerType == "pen")) {
+                if (isHoverDevice.current && e.pointerType !== "touch") {
+                  console.log("leave")
                   setHoveredPost(null)
                 }
               }}
@@ -112,15 +118,7 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
         })}
         <div className="bg-slate-200 w-full relative flex-1"></div>
         {totalPages > 1 && (
-          <div className="flex justify-between items-center mt-auto bg-slate-200 border-slate-300 border-2 sticky top-[200px]">
-            <button onClick={handlePrevPage} disabled={currentPage === 1} className="flex-1">
-              <FaChevronLeft className={`h-10 w-10 ${currentPage === 1 && "text-gray-400"}`} />
-            </button>
-            <span className="p-4">{`Page ${currentPage} of ${totalPages}`}</span>
-            <button onClick={handleNextPage} disabled={currentPage === totalPages} className="flex-1 flex justify-end">
-              <FaChevronRight className={`h-10 w-10 ${currentPage === totalPages && "text-gray-400"}`} />
-            </button>
-          </div>
+          <PaginationControls currentPage={currentPage} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
         )}
       </div>
 
