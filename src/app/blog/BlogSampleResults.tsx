@@ -86,19 +86,26 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
             <Link
               href={href}
               key={post._id}
+              onClick={e => {
+                e.preventDefault()
+              }}
               onPointerDown={e => {
                 e.preventDefault()
-                console.log(e.button === 0)
-                if (e.pointerType !== "touch" || isSelected || isNarrow) {
-                  router.push(href)
+                if (e.pointerType === "touch") {
+                  if (isSelected || isNarrow) {
+                    router.push(href)
+                  } else {
+                    handleSelectPost(post)
+                  }
                 } else {
-                  handleSelectPost(post)
+                  if (e.button === 0) {
+                    router.push(href)
+                  }
                 }
               }}
               onPointerEnter={e => {
                 e.preventDefault()
                 if (isHoverDevice.current && e.pointerType !== "touch") {
-                  console.log("enter")
                   handleSelectPost(post)
                   setHoveredPost(post._id)
                 }
@@ -106,7 +113,6 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
               onPointerLeave={e => {
                 e.preventDefault()
                 if (isHoverDevice.current && e.pointerType !== "touch") {
-                  console.log("leave")
                   setHoveredPost(null)
                 }
               }}
