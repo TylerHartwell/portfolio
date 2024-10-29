@@ -13,6 +13,9 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
   const [selectedPost, setSelectedPost] = useState<SanityDocument | null>(posts[0])
   const [hoveredPost, setHoveredPost] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
+  const [isDragging, setIsDragging] = useState(false)
+  const [pointerStartX, setPointerStartX] = useState(0)
+  const [pointerStartY, setPointerStartY] = useState(0)
 
   const scrollableRef = useRef<HTMLDivElement>(null)
 
@@ -91,6 +94,19 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
               }}
               onPointerDown={e => {
                 e.preventDefault()
+                setPointerStartX(e.clientX)
+                setPointerStartY(e.clientY)
+                setIsDragging(false)
+              }}
+              onPointerMove={e => {
+                if (Math.abs(e.clientX - pointerStartX) > 5 || Math.abs(e.clientY - pointerStartY) > 5) {
+                  setIsDragging(true)
+                }
+              }}
+              onPointerUp={e => {
+                if (isDragging) {
+                  return
+                }
                 if (e.pointerType === "touch") {
                   if (isSelected || isNarrow) {
                     router.push(href)
