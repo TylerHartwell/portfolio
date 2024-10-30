@@ -72,6 +72,55 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
     }
   }
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+  }
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    setPointerStartX(e.clientX)
+    setPointerStartY(e.clientY)
+    setIsDragging(false)
+  }
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
+    if (Math.abs(e.clientX - pointerStartX) > 5 || Math.abs(e.clientY - pointerStartY) > 5) {
+      setIsDragging(true)
+    }
+  }
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLAnchorElement>, post: SanityDocument, href: string, isSelected: boolean) => {
+    if (isDragging) {
+      return
+    }
+    if (e.pointerType === "touch") {
+      if (isSelected || isNarrow) {
+        router.push(href)
+      } else {
+        handleSelectPost(post)
+      }
+    } else {
+      if (e.button === 0) {
+        router.push(href)
+      }
+    }
+  }
+
+  const handlePointerEnter = (e: React.PointerEvent<HTMLAnchorElement>, post: SanityDocument) => {
+    e.preventDefault()
+    if (isHoverDevice.current && e.pointerType !== "touch") {
+      handleSelectPost(post)
+      setHoveredPost(post._id)
+    }
+  }
+
+  const handlePointerLeave = (e: React.PointerEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    if (isHoverDevice.current && e.pointerType !== "touch") {
+      setHoveredPost(null)
+    }
+  }
+
   return (
     <main className="w-full flex flex-col xs:flex-row bg-slate-100 relative h-full flex-1">
       <div className="flex flex-col w-full xs:w-auto min-h-[calc(100vh-4.5rem)] h-full  flex-1  bg-slate-100">
@@ -89,49 +138,12 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
             <Link
               href={href}
               key={post._id}
-              onClick={e => {
-                e.preventDefault()
-              }}
-              onPointerDown={e => {
-                e.preventDefault()
-                setPointerStartX(e.clientX)
-                setPointerStartY(e.clientY)
-                setIsDragging(false)
-              }}
-              onPointerMove={e => {
-                if (Math.abs(e.clientX - pointerStartX) > 5 || Math.abs(e.clientY - pointerStartY) > 5) {
-                  setIsDragging(true)
-                }
-              }}
-              onPointerUp={e => {
-                if (isDragging) {
-                  return
-                }
-                if (e.pointerType === "touch") {
-                  if (isSelected || isNarrow) {
-                    router.push(href)
-                  } else {
-                    handleSelectPost(post)
-                  }
-                } else {
-                  if (e.button === 0) {
-                    router.push(href)
-                  }
-                }
-              }}
-              onPointerEnter={e => {
-                e.preventDefault()
-                if (isHoverDevice.current && e.pointerType !== "touch") {
-                  handleSelectPost(post)
-                  setHoveredPost(post._id)
-                }
-              }}
-              onPointerLeave={e => {
-                e.preventDefault()
-                if (isHoverDevice.current && e.pointerType !== "touch") {
-                  setHoveredPost(null)
-                }
-              }}
+              onClick={handleClick}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={e => handlePointerUp(e, post, href, isSelected)}
+              onPointerEnter={e => handlePointerEnter(e, post)}
+              onPointerLeave={handlePointerLeave}
               className={`my-1 p-4 overflow-hidden active:bg-slate-100  ${highlight ? "bg-slate-100" : "bg-slate-200"}`}
             >
               <BlogPostSample title={post.title} date={new Date(post.publishedAt).toLocaleDateString("en-CA")} />
