@@ -1,6 +1,17 @@
+import { client } from "@/sanity/client"
+import { SanityDocument } from "next-sanity"
 import Image from "next/image"
 
-export default function BlogNav() {
+const POSTS_QUERY = `*[
+  _type == "post"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...3]{_id, title, slug}`
+
+const options = { next: { revalidate: 30 } }
+
+export default async function BlogNav() {
+  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options)
+
   return (
     <aside className="relative bg-neutral-200 w-full md:w-[200px] h-24 md:h-auto">
       <div className="absolute h-full w-full">
@@ -22,18 +33,18 @@ export default function BlogNav() {
         <div className="bg-white md:flex flex-col place-items-center p-3 hidden max-w-[90%] bg-opacity-80 rounded-lg">
           <span>Recent</span>
           <ul className="flex flex-col gap-2">
-            <li className="flex items-center">
-              <span className="w-2 h-2 mr-2 bg-black flex-shrink-0 transform rotate-45" />
-              <a href="/blog" className="underline text-sm font-bold">
-                Sample Blog Post
-              </a>
-            </li>
-            <li className="flex items-center">
-              <span className="w-2 h-2 mr-2 bg-black flex-shrink-0 transform rotate-45" />
-              <a href="/blog" className="underline text-sm font-bold">
-                Lessons from Sudoku Project
-              </a>
-            </li>
+            {posts.map(post => {
+              const href = `/blog/${post.slug.current}`
+
+              return (
+                <li key={post._id} className="flex items-center">
+                  <span className="w-2 h-2 mr-2 bg-black flex-shrink-0 transform rotate-45" />
+                  <a href={href} className="underline text-sm font-bold">
+                    {post.title}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
         </div>
         <div className="bg-white md:flex flex-col place-items-center p-3 hidden max-w-[90%] bg-opacity-80 rounded-lg">
