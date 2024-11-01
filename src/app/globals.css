@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --dynamic-header-height: 4.5rem; /* Fallback default */
 }
 
 *,

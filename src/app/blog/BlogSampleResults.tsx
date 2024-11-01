@@ -122,8 +122,8 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
   }
 
   return (
-    <main className="w-full flex flex-col xs:flex-row bg-slate-100 relative h-full flex-1">
-      <div className="flex flex-col w-full xs:w-auto min-h-[calc(100vh-4.5rem)] h-full  flex-1  bg-slate-100">
+    <main className="w-full flex flex-col xs:flex-row bg-slate-100 relative  flex-1">
+      <div className="flex flex-col w-full xs:w-auto flex-1 bg-slate-100">
         {totalPages > 1 && (
           <PaginationControls currentPage={currentPage} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
         )}
@@ -156,9 +156,12 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
         )}
       </div>
 
-      <div className="hidden xs:flex w-2/3 h-full relative ">
+      <div className="hidden xs:flex w-2/3 relative">
         {selectedPost ? (
-          <div className="w-full sticky self-start top-[4.5rem] overflow-y-auto max-h-[calc(100vh-4.5rem)]" ref={scrollableRef}>
+          <div
+            className="w-full sticky self-start overflow-y-auto top-[var(--dynamic-header-height)] max-h-[calc(100vh-var(--dynamic-header-height))]"
+            ref={scrollableRef}
+          >
             <h1 className="pl-2 pt-2 text-4xl font-bold">{selectedPost?.title}</h1>
             <span className="pl-2 text-sm my-4 inline-block text-black text-opacity-50">
               Published: {new Date(selectedPost.publishedAt).toLocaleDateString("en-CA")}

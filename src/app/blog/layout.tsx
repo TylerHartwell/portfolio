@@ -7,7 +7,7 @@ export default function BlogLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="flex flex-col md:flex-row-reverse">
+    <div className="flex flex-col md:flex-row-reverse flex-grow">
       <BlogNav />
       {children}
     </div>

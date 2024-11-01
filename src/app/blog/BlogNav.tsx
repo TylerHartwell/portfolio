@@ -13,7 +13,7 @@ export default async function BlogNav() {
   const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options)
 
   return (
-    <aside className="relative bg-neutral-200 w-full md:w-[200px] h-24 md:h-auto">
+    <aside className="relative bg-neutral-200 w-full md:w-[200px]">
       <div className="absolute h-full w-full">
         <Image
           src="/images/forest.jpg"
@@ -25,9 +25,9 @@ export default async function BlogNav() {
           className="object-cover h-full w-full"
         />
       </div>
-      <div className="relative z-10 w-full h-full flex md:flex-col justify-center md:justify-start items-center py-4 bg-transparent gap-6">
+      <div className="relative z-10 w-full flex md:flex-col justify-center md:justify-start items-center py-4 bg-transparent gap-6">
         <div className="flex flex-col md:flex-row w-min p-1 place-items-center gap-1 bg-opacity-20">
-          <input name="search" type="text" size={8} className="h-min px-1" />
+          <input name="search" type="text" size={8} className="px-1" />
           <button className="bg-amber-300 rounded-full px-2 font-bold hover:bg-amber-400 border-[1px] border-black border-opacity-30">Search</button>
         </div>
         <div className="bg-white md:flex flex-col place-items-center p-3 hidden max-w-[90%] bg-opacity-80 rounded-lg">
