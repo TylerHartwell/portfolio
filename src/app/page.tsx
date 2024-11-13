@@ -11,7 +11,7 @@ import imageUrlBuilder from "@sanity/image-url"
 
 const PROJECTS_QUERY = `*[
   _type == "project"
-]|order(publishedAt desc)[0...3]{
+]|order(!defined(featuredPriority), featuredPriority desc, publishedAt desc)[0...3]{
   _id,
   title,
   summary,
@@ -29,7 +29,8 @@ const PROJECTS_QUERY = `*[
     }
   },
   publishedAt,
-  blogSlug
+  blogSlug,
+  featuredPriority
 }`
 
 const { projectId, dataset } = client.config()
@@ -43,7 +44,7 @@ export default async function Home() {
   return (
     <>
       <main className="bg-slate-50 text-yellow-300 relative flex-grow">
-        <div className="absolute h-full w-full bg-green-800">
+        <div className="absolute h-full w-full bg-black">
           <Image src={forest} alt="bg-image" width={2560} height={1495} priority className="object-cover h-full w-full" />
         </div>
         <div className="absolute w-full h-full bg-black opacity-60 "></div>
@@ -90,7 +91,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="flex flex-col  items-center min-w-min md:flex-grow">
-            <h1 className="text-3xl self-center py-2 text-stone-300 font-bold text-center ">Most Recent Projects</h1>
+            <h1 className="text-3xl self-center py-2 text-stone-300 font-bold text-center ">Featured Projects</h1>
             <div className="flex flex-col gap-4">
               {projects.map(project => {
                 const projectImage = project.image?.asset

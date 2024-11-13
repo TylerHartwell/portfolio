@@ -6,7 +6,9 @@ export default function Project({
   src,
   desc,
   width,
-  height
+  height,
+  index,
+  length
 }: {
   name: string
   url: string
@@ -14,6 +16,8 @@ export default function Project({
   desc: string
   width: number
   height: number
+  index: number
+  length: number
 }) {
   return (
     <div className="flex flex-col gap-4 py-4">
@@ -27,7 +31,7 @@ export default function Project({
           <Image src={src} alt="screenshot of project" width={width} height={height} className="rounded-2xl max-w-full h-auto" priority />
         </a>
       </div>
-      <hr className="border-zinc-900 hidden sm:block" />
+      {index >= length - 2 && <hr className="border-zinc-900 hidden sm:block" />}
     </div>
   )
 }

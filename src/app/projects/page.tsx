@@ -1,4 +1,4 @@
-import Project from "@/components/Project"
+import Project from "@/app/projects/Project"
 import { client } from "@/sanity/client"
 import { SanityImageSource } from "@sanity/image-url/lib/types/types"
 import imageUrlBuilder from "@sanity/image-url"
@@ -7,7 +7,7 @@ import { Fragment } from "react"
 
 const PROJECTS_QUERY = `*[
   _type == "project"
-]|order(publishedAt desc)[0...12]{
+]|order(!defined(featuredPriority), featuredPriority desc, publishedAt desc)[0...12]{
   _id,
   title,
   summary,
@@ -25,7 +25,8 @@ const PROJECTS_QUERY = `*[
     }
   },
   publishedAt,
-  blogSlug
+  blogSlug,
+  featuredPriority
 }`
 
 const { projectId, dataset } = client.config()
@@ -42,7 +43,7 @@ export default async function Projects() {
         <section className="px-2 py-8 md:px-16 bg-slate-100 flex-1">
           <h2 className="text-center text-3xl pb-4">Projects</h2>
           <div className="grid md:grid-cols-2 grid-rows-1 gap-x-4">
-            {projects.map((project, index) => {
+            {projects.map((project, index, array) => {
               const projectImage = project.image?.asset
               const { width, height } = projectImage.metadata?.dimensions || { width: 1080, height: 920 }
               const projectImageUrl = urlFor(project.image)?.width(width).height(height).url() || "/404"
@@ -50,7 +51,16 @@ export default async function Projects() {
               return (
                 <Fragment key={index}>
                   <div className="row-span-2">
-                    <Project name={project.title} url={project.url} src={projectImageUrl} desc={project.summary} width={width} height={height} />
+                    <Project
+                      name={project.title}
+                      url={project.url}
+                      src={projectImageUrl}
+                      desc={project.summary}
+                      width={width}
+                      height={height}
+                      index={index}
+                      length={array.length}
+                    />
                   </div>
                   {index == 0 && <div></div>}
                 </Fragment>
