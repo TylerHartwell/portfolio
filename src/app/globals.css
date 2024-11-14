@@ -75,6 +75,18 @@ body {
   text-indent: 0%;
 }
 
+.post-content a {
+  text-decoration: underline;
+}
+
+.post-content a:hover {
+  color: green;
+}
+
+.post-content a:active {
+  color: purple;
+}
+
 .post-content > blockquote {
   background-color: rgb(226 232 240);
   border: 1px solid #999;
