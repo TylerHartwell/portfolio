@@ -60,6 +60,7 @@ export default async function Projects() {
                       height={height}
                       index={index}
                       length={array.length}
+                      blogSlug={project.blogSlug}
                     />
                   </div>
                   {index == 0 && <div></div>}

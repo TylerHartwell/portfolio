@@ -8,7 +8,8 @@ export default function Project({
   width,
   height,
   index,
-  length
+  length,
+  blogSlug
 }: {
   name: string
   url: string
@@ -18,14 +19,25 @@ export default function Project({
   height: number
   index: number
   length: number
+  blogSlug: string
 }) {
+  const blogURL = `/blog/${blogSlug}`
   return (
     <div className="flex flex-col gap-4 py-4">
       <hr className="border-zinc-900 " />
-      <a href={url} target="_blank" className="text-2xl font-bold sm:text-4xl flex-1 text-center">
+      <a href={blogURL} target="_blank" className="text-2xl font-bold sm:text-4xl flex-1 text-center">
         {name}
       </a>
       <p>{desc}</p>
+      {blogSlug && (
+        <span className="mx-auto">
+          See blog post{" "}
+          <a href={blogURL} className="hover:text-green-500 active:text-purple-600 underline">
+            here
+          </a>
+        </span>
+      )}
+
       <div className="relative ">
         <a href={url} target="_blank">
           <Image src={src} alt="screenshot of project" width={width} height={height} className="rounded-2xl max-w-full h-auto" priority />
