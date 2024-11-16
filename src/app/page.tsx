@@ -78,12 +78,7 @@ export default async function Home() {
               Hey, I&apos;m Tyler! I&apos;m a fullstack software developer creating useful and intuitive experiences.
             </p>
             <div className="flex w-full justify-center">
-              <a
-                href="/pdfs/Tyler_Hartwell_Software_Engineer_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex gap-2 items-center"
-              >
+              <a href="/pdfs/Tyler_Hartwell_Software_Engineer.pdf" target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center">
                 Check out my Resume
                 <FaArrowRight />
                 <FaFilePdf color="white" title="pdf icon" />
