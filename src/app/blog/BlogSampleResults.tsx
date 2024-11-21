@@ -3,10 +3,11 @@
 import Link from "next/link"
 import BlogPostSample from "@/app/blog/BlogPostSample"
 import { useEffect, useMemo, useRef, useState } from "react"
-import { PortableText, SanityDocument } from "next-sanity"
+import { SanityDocument } from "next-sanity"
 import { useRouter } from "next/navigation"
 import { BREAKPOINT_XS } from "@/utils/breakpoints"
 import PaginationControls from "@/components/PaginationControls"
+import PostContent from "./PostContent"
 
 export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?: SanityDocument[]; perPage?: number }) {
   const router = useRouter()
@@ -167,7 +168,7 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
               Published: {new Date(selectedPost.publishedAt).toLocaleDateString("en-CA")}
             </span>
             <div className="post-content flex flex-col gap-2 indent-8 pb-2 overflow-hidden">
-              {Array.isArray(selectedPost?.body) && <PortableText value={selectedPost.body} />}
+              <PostContent body={selectedPost.body} />
             </div>
           </div>
         ) : (

@@ -1,4 +1,5 @@
-import { PortableText, PortableTextBlock } from "next-sanity"
+import { PortableTextBlock } from "next-sanity"
+import PostContent from "./PostContent"
 
 interface Props {
   title: string
@@ -11,7 +12,9 @@ export default function BlogPost({ title, date, body }: Props) {
     <>
       <h1 className="text-4xl font-bold">{title}</h1>
       <p className="text-sm">Published: {date}</p>
-      <div className="post-content">{Array.isArray(body) && <PortableText value={body} />}</div>
+      <div className="post-content">
+        <PostContent body={body} />
+      </div>
     </>
   )
 }
