@@ -39,7 +39,7 @@ export default async function Projects() {
 
   return (
     <>
-      <main className="flex-grow flex flex-col bg-zinc-700">
+      <main className="grow flex flex-col bg-zinc-700">
         <section className="px-2 py-8 md:px-16 bg-slate-100 flex-1">
           <h2 className="text-center text-3xl pb-4">Projects</h2>
           <div className="grid md:grid-cols-2 grid-rows-1 gap-x-4">

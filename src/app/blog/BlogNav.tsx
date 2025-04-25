@@ -38,7 +38,7 @@ export default async function BlogNav() {
 
               return (
                 <li key={post._id} className="flex items-center">
-                  <span className="w-2 h-2 mr-2 bg-black flex-shrink-0 transform rotate-45" />
+                  <span className="w-2 h-2 mr-2 bg-black shrink-0 transform rotate-45" />
                   <a href={href} className="underline text-sm font-bold">
                     {post.title}
                   </a>

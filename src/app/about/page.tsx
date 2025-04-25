@@ -17,7 +17,7 @@ const techIcons = [
 export default function About() {
   return (
     <>
-      <main className="flex-grow flex flex-col justify-start bg-zinc-700">
+      <main className="grow flex flex-col justify-start bg-zinc-700">
         <section className="p-8 bg-slate-100 flex flex-col items-center">
           <h2 className="text-center text-3xl pb-8">About</h2>
           <p className="max-w-[1000px] indent-6">
