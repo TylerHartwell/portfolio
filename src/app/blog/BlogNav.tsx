@@ -1,6 +1,7 @@
 import { client } from "@/sanity/client"
 import { SanityDocument } from "next-sanity"
 import Image from "next/image"
+import Link from "next/link"
 
 const POSTS_QUERY = `*[
   _type == "post"
@@ -39,9 +40,9 @@ export default async function BlogNav() {
               return (
                 <li key={post._id} className="flex items-center">
                   <span className="w-2 h-2 mr-2 bg-black shrink-0 transform rotate-45" />
-                  <a href={href} className="underline text-sm font-bold">
+                  <Link href={href} className="underline text-sm font-bold">
                     {post.title}
-                  </a>
+                  </Link>
                 </li>
               )
             })}
@@ -51,24 +52,24 @@ export default async function BlogNav() {
           <span>Categories</span>
           <ul className="flex flex-col gap-2 text-center place-items-center">
             <li className="flex items-center">
-              <a href="/blog" className="underline text-sm font-bold">
+              <Link href="/blog" className="underline text-sm font-bold">
                 Project Detail
-              </a>
+              </Link>
             </li>
             <li className="flex items-center">
-              <a href="/blog" className="underline text-sm font-bold">
+              <Link href="/blog" className="underline text-sm font-bold">
                 Tooling
-              </a>
+              </Link>
             </li>
             <li className="flex items-center">
-              <a href="/blog" className="underline text-sm font-bold">
+              <Link href="/blog" className="underline text-sm font-bold">
                 Reflections
-              </a>
+              </Link>
             </li>
             <li className="flex items-center">
-              <a href="/blog" className="underline text-sm font-bold">
+              <Link href="/blog" className="underline text-sm font-bold">
                 Misc.
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

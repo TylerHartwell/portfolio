@@ -12,7 +12,8 @@ const urlFor = (source: SanityImageSource) => (projectId && dataset ? imageUrlBu
 
 const options = { next: { revalidate: 30 } }
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
+export default async function PostPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const post = await client.fetch<SanityDocument>(POST_QUERY, params, options)
   const postImageUrl = post.image ? urlFor(post.image)?.width(550).height(310).url() : null
 

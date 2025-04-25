@@ -3,7 +3,6 @@ import { FaGithub, FaLinkedin } from "react-icons/fa"
 import { FaFilePdf, FaArrowRight } from "react-icons/fa6"
 import { MdEmail } from "react-icons/md"
 import Image from "next/image"
-import forest from "/public/images/forest.jpg"
 import { client } from "@/sanity/client"
 import { SanityDocument } from "next-sanity"
 import { SanityImageSource } from "@sanity/image-url/lib/types/types"
@@ -45,7 +44,7 @@ export default async function Home() {
     <>
       <main className="bg-slate-50 text-yellow-300 relative grow">
         <div className="absolute h-full w-full bg-black">
-          <Image src={forest} alt="bg-image" width={2560} height={1495} priority className="object-cover h-full w-full" />
+          <Image src="/images/forest.jpg" alt="bg-image" width={2560} height={1495} priority className="object-cover h-full w-full" />
         </div>
         <div className="absolute w-full h-full bg-black opacity-60 "></div>
         <section

@@ -7,7 +7,8 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`
 
 const options = { next: { revalidate: 30 } }
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
+export default async function PostPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const post = await client.fetch<SanityDocument>(POST_QUERY, params, options)
 
   return (
