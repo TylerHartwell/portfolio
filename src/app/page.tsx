@@ -42,47 +42,64 @@ export default async function Home() {
 
   return (
     <>
-      <main className="bg-slate-50 text-yellow-300 relative grow">
+      <main className="bg-slate-50 text-yellow-200 relative grow">
         <div className="absolute h-full w-full bg-black">
           <Image src="/images/forest.jpg" alt="bg-image" width={2560} height={1495} priority className="object-cover h-full w-full" />
         </div>
         <div className="absolute w-full h-full bg-black opacity-60 "></div>
         <section
           id="home"
-          className="relative mx-auto my-6 flex flex-col md:flex-row gap-6 md:justify-center items-center md:items-start md:p-6 w-[90%]"
+          className="relative mx-auto my-6 flex flex-col md:flex-row gap-6 md:justify-center items-center md:items-start md:px-6 w-[90%]"
         >
           <div className="flex flex-col md:self-start gap-6 justify-start md:justify-between min-w-min items-center m-6 md:items-start md:grow-0 md:max-w-[40%]">
-            <h2 className="text-4xl md:text-6xl text-center md:text-left">Tyler Hartwell</h2>
+            <p className="text-xl w-auto italic mb-3">
+              Hey, I&apos;m Tyler! I&apos;m a fullstack software developer with a mechanical engineering background creating useful and intuitive
+              experiences.
+            </p>
             <ul className="flex flex-col items-center md:items-start gap-6 md:ml-12 text-nowrap">
               <li>
-                <a href="https://github.com/TylerHartwell" target="_blank" className="underline flex gap-2 items-center">
-                  <FaGithub color="white" title="github icon" />
+                <a
+                  href="https://github.com/TylerHartwell"
+                  target="_blank"
+                  className="underline flex gap-2 items-center hover:translate-y-[1px] transition-all group"
+                >
+                  <FaGithub color="white" title="github icon" size={30} className="group-hover:scale-120 transition-all" />
                   github.com/TylerHartwell
                 </a>
               </li>
               <li>
-                <a href="mailto:thartwell37@gmail.com" target="_blank" className="underline flex gap-2 items-center">
-                  <MdEmail color="white" title="email icon" />
+                <a
+                  href="mailto:thartwell37@gmail.com"
+                  target="_blank"
+                  className="underline flex gap-2 items-center hover:translate-y-[1px] transition-all group"
+                >
+                  <MdEmail color="white" title="email icon" size={30} className="group-hover:scale-120 transition-all" />
                   tharwell37@gmail.com
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/tyler-hartwell/" target="_blank" className="underline flex gap-2 items-center">
-                  <FaLinkedin color="white" title="linkedin icon" />
+                <a
+                  href="https://www.linkedin.com/in/tyler-hartwell/"
+                  target="_blank"
+                  className="underline flex gap-2 items-center hover:translate-y-[1px] transition-all group"
+                >
+                  <FaLinkedin color="white" title="linkedin icon" size={30} className="group-hover:scale-120 transition-all" />
                   linkedin.com/in/tyler-hartwell
                 </a>
               </li>
+              <li className="mt-3">
+                <a
+                  href="/pdfs/Tyler_Hartwell_Software_Engineer.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex gap-2 items-center hover:translate-y-[1px] transition-all group"
+                >
+                  Check out my Resume
+                  <FaArrowRight />
+                  <FaFilePdf color="white" title="pdf icon" size={30} className="group-hover:scale-120 transition-all" />
+                </a>
+              </li>
             </ul>
-            <p className="text-xl w-auto italic">
-              Hey, I&apos;m Tyler! I&apos;m a fullstack software developer creating useful and intuitive experiences.
-            </p>
-            <div className="flex w-full justify-center">
-              <a href="/pdfs/Tyler_Hartwell_Software_Engineer.pdf" target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center">
-                Check out my Resume
-                <FaArrowRight />
-                <FaFilePdf color="white" title="pdf icon" />
-              </a>
-            </div>
           </div>
           <div className="flex flex-col  items-center min-w-min md:grow">
             <h1 className="text-3xl self-center py-2 text-stone-300 font-bold text-center ">Featured Projects</h1>

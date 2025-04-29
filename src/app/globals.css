@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
   --color-background: var(--background);
@@ -40,6 +40,30 @@
   *::before,
   *::after {
     box-sizing: border-box;
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+  .animate-marquee2 {
+    animation: marquee2 20s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes marquee2 {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
   }
 
   /* @media (prefers-color-scheme: dark) {

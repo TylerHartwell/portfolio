@@ -23,7 +23,8 @@ export default function About() {
           <p className="max-w-[1000px] indent-6">
             I&apos;m Tyler Hartwell, a fullstack software developer. I have a background in mechanical engineering and decided to make the transition
             into software engineering where I find more freedom to exercise creative problem solving and make effective and enjoyable user
-            experiences. Here you can see some of the projects I&apos;ve worked on and learn about the problems I solved during their creation.
+            experiences. Here, you can see some of the projects I&apos;ve worked on and learn about some of the problems I solved during their
+            creation.
           </p>
         </section>
         <section className="p-8 bg-slate-100 flex-1">
