@@ -10,7 +10,7 @@ export default function SocialLinks() {
           target="_blank"
           className="underline flex gap-2 items-center hover:translate-y-[1px] transition-all group"
         >
-          <FaGithub color="white" title="github icon" size={30} className="group-hover:scale-120 transition-all" />
+          <FaGithub color="white" title="github icon" size={30} className="group-hover:scale-140 transition-all" />
           github.com/TylerHartwell
         </a>
       </li>
@@ -20,7 +20,7 @@ export default function SocialLinks() {
           target="_blank"
           className="underline flex gap-2 items-center hover:translate-y-[1px] transition-all group"
         >
-          <MdEmail color="white" title="email icon" size={30} className="group-hover:scale-120 transition-all" />
+          <MdEmail color="white" title="email icon" size={30} className="group-hover:scale-140 transition-all" />
           tharwell37@gmail.com
         </a>
       </li>
@@ -30,7 +30,7 @@ export default function SocialLinks() {
           target="_blank"
           className="underline flex gap-2 items-center hover:translate-y-[1px] transition-all group"
         >
-          <FaLinkedin color="white" title="linkedin icon" size={30} className="group-hover:scale-120 transition-all" />
+          <FaLinkedin color="white" title="linkedin icon" size={30} className="group-hover:scale-140 transition-all" />
           linkedin.com/in/tyler-hartwell
         </a>
       </li>
@@ -43,7 +43,7 @@ export default function SocialLinks() {
         >
           Check out my Resume
           <FaArrowRight />
-          <FaFilePdf color="white" title="pdf icon" size={30} className="group-hover:scale-120 transition-all" />
+          <FaFilePdf color="white" title="pdf icon" size={30} className="group-hover:scale-140 transition-all" />
         </a>
       </li>
     </ul>

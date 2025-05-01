@@ -6,6 +6,7 @@ import imageUrlBuilder from "@sanity/image-url"
 import FeaturedProjects from "@/components/FeaturedProjects"
 import IntroBlurb from "@/components/IntroBlurb"
 import SocialLinks from "@/components/SocialLinks"
+import TechMarquee from "@/components/TechMarquee"
 
 const PROJECTS_QUERY = `*[
   _type == "project"
@@ -49,7 +50,7 @@ export default async function Home() {
         <section id="home" className="relative mx-auto my-6 flex flex-col  gap-6  items-center  w-[90%]">
           <div className="flex flex-col  gap-6 justify-start min-w-min items-center m-6 max-w-[500px]">
             <IntroBlurb />
-
+            <TechMarquee />
             <SocialLinks />
           </div>
           <FeaturedProjects projects={projects} urlFor={urlFor} />
