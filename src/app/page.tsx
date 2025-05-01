@@ -1,12 +1,11 @@
-import RecentProject from "@/components/RecentProject"
-import { FaGithub, FaLinkedin } from "react-icons/fa"
-import { FaFilePdf, FaArrowRight } from "react-icons/fa6"
-import { MdEmail } from "react-icons/md"
 import Image from "next/image"
 import { client } from "@/sanity/client"
 import { SanityDocument } from "next-sanity"
 import { SanityImageSource } from "@sanity/image-url/lib/types/types"
 import imageUrlBuilder from "@sanity/image-url"
+import FeaturedProjects from "@/components/FeaturedProjects"
+import IntroBlurb from "@/components/IntroBlurb"
+import SocialLinks from "@/components/SocialLinks"
 
 const PROJECTS_QUERY = `*[
   _type == "project"
@@ -47,72 +46,13 @@ export default async function Home() {
           <Image src="/images/forest.jpg" alt="bg-image" width={2560} height={1495} priority className="object-cover h-full w-full" />
         </div>
         <div className="absolute w-full h-full bg-black opacity-60 "></div>
-        <section
-          id="home"
-          className="relative mx-auto my-6 flex flex-col md:flex-row gap-6 md:justify-center items-center md:items-start md:px-6 w-[90%]"
-        >
-          <div className="flex flex-col md:self-start gap-6 justify-start md:justify-between min-w-min items-center m-6 md:items-start md:grow-0 md:max-w-[40%]">
-            <p className="text-xl w-auto italic mb-3">
-              Hey, I&apos;m Tyler! I&apos;m a fullstack software developer with a mechanical engineering background creating useful and intuitive
-              experiences.
-            </p>
-            <ul className="flex flex-col items-center md:items-start gap-6 md:ml-12 text-nowrap">
-              <li>
-                <a
-                  href="https://github.com/TylerHartwell"
-                  target="_blank"
-                  className="underline flex gap-2 items-center hover:translate-y-[1px] transition-all group"
-                >
-                  <FaGithub color="white" title="github icon" size={30} className="group-hover:scale-120 transition-all" />
-                  github.com/TylerHartwell
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:thartwell37@gmail.com"
-                  target="_blank"
-                  className="underline flex gap-2 items-center hover:translate-y-[1px] transition-all group"
-                >
-                  <MdEmail color="white" title="email icon" size={30} className="group-hover:scale-120 transition-all" />
-                  tharwell37@gmail.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/tyler-hartwell/"
-                  target="_blank"
-                  className="underline flex gap-2 items-center hover:translate-y-[1px] transition-all group"
-                >
-                  <FaLinkedin color="white" title="linkedin icon" size={30} className="group-hover:scale-120 transition-all" />
-                  linkedin.com/in/tyler-hartwell
-                </a>
-              </li>
-              <li className="mt-3">
-                <a
-                  href="/pdfs/Tyler_Hartwell_Software_Engineer.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex gap-2 items-center hover:translate-y-[1px] transition-all group"
-                >
-                  Check out my Resume
-                  <FaArrowRight />
-                  <FaFilePdf color="white" title="pdf icon" size={30} className="group-hover:scale-120 transition-all" />
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="flex flex-col  items-center min-w-min md:grow">
-            <h1 className="text-3xl self-center py-2 text-stone-300 font-bold text-center ">Featured Projects</h1>
-            <div className="flex flex-col gap-4">
-              {projects.map(project => {
-                const projectImage = project.image?.asset
-                const { width, height } = projectImage.metadata?.dimensions || { width: 1080, height: 920 }
-                const projectImageUrl = urlFor(project.image)?.width(width).height(height).url() || "/404"
+        <section id="home" className="relative mx-auto my-6 flex flex-col  gap-6  items-center  w-[90%]">
+          <div className="flex flex-col  gap-6 justify-start min-w-min items-center m-6 max-w-[500px]">
+            <IntroBlurb />
 
-                return <RecentProject key={project._id} name={project.title} url={project.url} src={projectImageUrl} width={width} height={height} />
-              })}
-            </div>
+            <SocialLinks />
           </div>
+          <FeaturedProjects projects={projects} urlFor={urlFor} />
         </section>
       </main>
     </>

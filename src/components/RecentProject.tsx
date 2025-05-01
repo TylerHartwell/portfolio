@@ -2,8 +2,8 @@ import Image from "next/image"
 
 export default function RecentProject({ name, url, src, width, height }: { name: string; url: string; src: string; width: number; height: number }) {
   return (
-    <div className="flex items-center">
-      <div className="w-[50%] min-w-[100px] border-2 border-transparent border-solid transition-all  max-w-[200px] sm:w-[200px] relative overflow-hidden hover:translate-y-[1px] hover:hover:border-yellow-200 rounded-2xl ">
+    <div className="grid grid-cols-[minmax(min-content,1fr)_1fr] items-center">
+      <div className="w-full min-w-[100px] border-transparent border-solid transition-all  max-w-[400px] relative overflow-hidden hover:translate-y-[1px] hover:hover:border-yellow-200 rounded-2xl ">
         <a href={url} target="_blank">
           <Image
             src={src}
@@ -16,10 +16,19 @@ export default function RecentProject({ name, url, src, width, height }: { name:
           />
         </a>
       </div>
-
-      <a href={url} target="_blank" className="pl-4 text-2xl font-bold sm:text-4xl flex-1 hover:underline hover:translate-y-[1px] transition-all">
-        {name}
-      </a>
+      <div className="flex flex-col justify-end h-full">
+        <a
+          href={url}
+          target="_blank"
+          className="flex-1 text-2xl grid place-items-center font-bold hover:underline hover:translate-y-[1px] transition-all"
+        >
+          {name}
+        </a>
+        <a href={url} target="_blank" className=" underline self-center">
+          Project Overview
+        </a>
+        <p className=" self-center">Typescript, React, Next.js</p>
+      </div>
     </div>
   )
 }
