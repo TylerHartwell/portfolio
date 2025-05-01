@@ -13,6 +13,7 @@ const PROJECTS_QUERY = `*[
 ]|order(!defined(featuredPriority), featuredPriority desc, publishedAt desc)[0...3]{
   _id,
   title,
+  brief,
   summary,
   url,
   image {

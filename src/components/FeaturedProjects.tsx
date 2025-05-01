@@ -18,7 +18,17 @@ export default function FeaturedProjects({ projects, urlFor }: Props) {
           const { width, height } = projectImage.metadata?.dimensions || { width: 1080, height: 920 }
           const projectImageUrl = urlFor(project.image)?.width(width).height(height).url() || "/404"
 
-          return <RecentProject key={project._id} name={project.title} url={project.url} src={projectImageUrl} width={width} height={height} />
+          return (
+            <RecentProject
+              key={project._id}
+              name={project.title}
+              brief={project.brief}
+              url={project.url}
+              src={projectImageUrl}
+              width={width}
+              height={height}
+            />
+          )
         })}
       </div>
     </div>

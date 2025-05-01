@@ -1,6 +1,20 @@
 import Image from "next/image"
 
-export default function RecentProject({ name, url, src, width, height }: { name: string; url: string; src: string; width: number; height: number }) {
+export default function RecentProject({
+  name,
+  brief,
+  url,
+  src,
+  width,
+  height
+}: {
+  name: string
+  brief: string
+  url: string
+  src: string
+  width: number
+  height: number
+}) {
   return (
     <div className="grid grid-cols-[minmax(min-content,1fr)_1fr] items-center ">
       <div className="w-full min-w-[100px] border-transparent border-solid border-2 transition-all max-w-[400px] relative overflow-hidden hover:translate-y-[1px] hover:border-yellow-200 rounded-2xl ">
@@ -16,7 +30,7 @@ export default function RecentProject({ name, url, src, width, height }: { name:
           />
         </a>
       </div>
-      <div className="flex flex-col justify-end h-full ">
+      <div className="flex flex-col justify-end gap-2 h-full ">
         <div className="flex-1 @container flex flex-col justify-center">
           <a
             href={url}
@@ -30,7 +44,7 @@ export default function RecentProject({ name, url, src, width, height }: { name:
         <a href={url} target="_blank" className="text-sm underline self-center hover:opacity-90">
           Project Overview
         </a>
-        <p className=" self-center">Typescript, React, Next.js</p>
+        <p className="self-center text-center text-sm">{brief}</p>
       </div>
     </div>
   )
