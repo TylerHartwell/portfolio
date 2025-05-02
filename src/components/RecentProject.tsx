@@ -16,8 +16,8 @@ export default function RecentProject({
   height: number
 }) {
   return (
-    <div className="grid grid-cols-[minmax(min-content,1fr)_1fr] items-center ">
-      <div className="w-full min-w-[100px] border-transparent border-solid border-2 transition-all max-w-[400px] relative overflow-hidden hover:translate-y-[1px] hover:border-yellow-200 rounded-2xl ">
+    <div className="grid grid-cols-[minmax(min-content,1fr)_1fr] items-stretch">
+      <div className="w-full min-w-[100px] border-transparent border-solid border-2 transition-all flex flex-col justify-center max-w-[400px] relative overflow-hidden hover:scale-105 hover:border-yellow-200 rounded-2xl bg-black">
         <a href={url} target="_blank">
           <Image
             src={src}
@@ -25,12 +25,12 @@ export default function RecentProject({
             title={`screenshot of ${name} project`}
             width={width}
             height={height}
-            className="max-w-full h-auto"
+            className="object-cover"
             priority
           />
         </a>
       </div>
-      <div className="flex flex-col justify-end gap-2 h-full ">
+      <div className="flex flex-col justify-end gap-2 h-full">
         <div className="flex-1 @container flex flex-col justify-center">
           <a
             href={url}
@@ -40,11 +40,10 @@ export default function RecentProject({
             {name}
           </a>
         </div>
-
+        <p className="self-center text-center text-sm">{brief}</p>
         <a href={url} target="_blank" className="text-sm underline self-center hover:opacity-90">
           Project Overview
         </a>
-        <p className="self-center text-center text-sm">{brief}</p>
       </div>
     </div>
   )

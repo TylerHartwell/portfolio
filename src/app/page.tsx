@@ -10,7 +10,7 @@ import TechMarquee from "@/components/TechMarquee"
 
 const PROJECTS_QUERY = `*[
   _type == "project"
-]|order(!defined(featuredPriority), featuredPriority desc, publishedAt desc)[0...3]{
+]|order(!defined(featuredPriority), featuredPriority desc, publishedAt desc)[0...4]{
   _id,
   title,
   brief,
