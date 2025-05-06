@@ -7,24 +7,6 @@
   --breakpoint-xs: 460px;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}
-
 @utility text-balance {
   text-wrap: balance;
 }
@@ -34,12 +16,6 @@
     --background: #ffffff;
     --foreground: #171717;
     --dynamic-header-height: 4.5rem; /* Fallback default */
-  }
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
   }
 
   .animate-marquee {
@@ -64,19 +40,6 @@
     100% {
       transform: translateX(0%);
     }
-  }
-
-  /* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
-  body {
-    color: var(--foreground);
-    background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
   }
 
   .post-content > p {
@@ -179,14 +142,4 @@
   .post-content > ul > li {
     list-style-type: none;
   }
-}
-
-.b1 {
-  border: 5px solid red;
-}
-.b2 {
-  border: 5px solid green;
-}
-.b3 {
-  border: 5px solid blue;
 }
