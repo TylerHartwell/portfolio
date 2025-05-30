@@ -48,12 +48,28 @@ export default async function Home() {
           <Image src="/images/forest.jpg" alt="bg-image" width={2560} height={1495} priority className="object-cover h-full w-full" />
         </div>
         <div className="absolute w-full h-full bg-black opacity-60 "></div>
+
         <section id="home" className="relative mx-auto my-6 flex flex-col  gap-6  items-center  w-[90%]">
-          <div className="flex flex-col  gap-6 justify-start min-w-min items-center m-6 max-w-[500px]">
+          <div className="flex flex-col gap-6 justify-start min-w-min items-center m-6 max-w-[500px]">
             <IntroBlurb />
-            <TechMarquee />
-            <SocialLinks />
+            <div className="flex flex-col lg:flex-row justify-between">
+              <div className="flex flex-col gap-6  justify-start min-w-min items-center m-6 max-w-[500px]">
+                <TechMarquee />
+                <SocialLinks />
+              </div>
+              <div className="relative right-0">
+                <iframe
+                  src="https://weather.tylerhartwell.com"
+                  width="500"
+                  height="300"
+                  className="border-0"
+                  loading="lazy"
+                  title="Weather by Tyler Hartwell"
+                />
+              </div>
+            </div>
           </div>
+
           <FeaturedProjects projects={projects} urlFor={urlFor} />
         </section>
       </main>
