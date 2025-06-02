@@ -49,20 +49,18 @@ export default async function Home() {
         </div>
         <div className="absolute w-full h-full bg-black opacity-60 "></div>
 
-        <section id="home" className="relative mx-auto my-6 flex flex-col  gap-6  items-center  w-[90%]">
-          <div className="flex flex-col gap-6 justify-start min-w-min items-center m-6 max-w-[500px]">
+        <section id="home" className="relative mx-auto my-6 flex flex-col  gap-6  items-center  w-[90%] ">
+          <div className="flex flex-col gap-6 justify-start  items-center m-6  w-full">
             <IntroBlurb />
-            <div className="flex flex-col lg:flex-row justify-between">
+            <div className="flex flex-col lg:flex-row justify-center  w-full items-center">
               <div className="flex flex-col gap-6  justify-start min-w-min items-center m-6 max-w-[500px]">
                 <TechMarquee />
                 <SocialLinks />
               </div>
-              <div className="relative right-0">
+              <div className="relative w-full max-w-[800px] ">
                 <iframe
                   src="https://weather.tylerhartwell.com"
-                  width="500"
-                  height="300"
-                  className="border-0"
+                  className="border-0 [aspect-ratio:5/3] w-full"
                   loading="lazy"
                   title="Weather by Tyler Hartwell"
                 />

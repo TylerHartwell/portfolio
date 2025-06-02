@@ -31,7 +31,7 @@ export default function Header() {
   const isActive = (path: string) => (pathname === path ? "text-blue-500 underline underline-offset-4" : "text-gray-500")
 
   return (
-    <header ref={headerRef} className="sticky top-0 w-full bg-[var(--background)] z-50 flex flex-col justify-center items-center">
+    <header ref={headerRef} className="sticky top-0 w-full bg-[var(--background)] z-50 flex flex-col justify-center items-center text-sm sm:text-lg">
       <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center text-nowrap sm:w-[90%] min-w-min max-w-full sm:gap-4 py-2">
         <div className="flex flex-col justify-center">
           <span className="sm:text-4xl font-bold">Tyler Hartwell</span>
