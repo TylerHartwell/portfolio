@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 export default function RecentProject({
   name,
@@ -6,7 +7,8 @@ export default function RecentProject({
   url,
   src,
   width,
-  height
+  height,
+  blogURL
 }: {
   name: string
   brief: string
@@ -14,6 +16,7 @@ export default function RecentProject({
   src: string
   width: number
   height: number
+  blogURL: string
 }) {
   return (
     <div className="grid grid-cols-[minmax(min-content,1fr)_1fr] items-stretch">
@@ -41,9 +44,9 @@ export default function RecentProject({
           </a>
         </div>
         <p className="self-center text-center text-sm">{brief}</p>
-        <a href={url} target="_blank" className="text-sm underline self-center hover:opacity-90">
+        <Link href={blogURL} className="text-sm underline self-center hover:opacity-90">
           Project Overview
-        </a>
+        </Link>
       </div>
     </div>
   )

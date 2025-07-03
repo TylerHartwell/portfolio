@@ -27,10 +27,10 @@ export default async function BlogNav() {
         />
       </div>
       <div className="relative z-10 w-full flex md:flex-col justify-center md:justify-start items-center py-4 bg-transparent gap-6">
-        <div className="flex flex-col md:flex-row w-min p-1 place-items-center gap-1 bg-opacity-20">
+        {/* <div className="flex flex-col md:flex-row w-min p-1 place-items-center gap-1 bg-opacity-20">
           <input name="search" type="text" size={8} className="px-1" />
           <button className="bg-amber-300 rounded-full px-2 font-bold hover:bg-amber-400 border-[1px] border-black border-opacity-30">Search</button>
-        </div>
+        </div> */}
         <div className="bg-white md:flex flex-col place-items-center p-3 hidden max-w-[90%] bg-opacity-80 rounded-lg">
           <span>Recent</span>
           <ul className="flex flex-col gap-2">
@@ -48,7 +48,7 @@ export default async function BlogNav() {
             })}
           </ul>
         </div>
-        <div className="bg-white md:flex flex-col place-items-center p-3 hidden max-w-[90%] bg-opacity-80 rounded-lg">
+        {/* <div className="bg-white md:flex flex-col place-items-center p-3 hidden max-w-[90%] bg-opacity-80 rounded-lg">
           <span>Categories</span>
           <ul className="flex flex-col gap-2 text-center place-items-center">
             <li className="flex items-center">
@@ -72,7 +72,7 @@ export default async function BlogNav() {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </aside>
   )

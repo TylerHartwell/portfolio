@@ -17,6 +17,7 @@ export default function FeaturedProjects({ projects, urlFor }: Props) {
           const projectImage = project.image?.asset
           const { width, height } = projectImage.metadata?.dimensions || { width: 1080, height: 920 }
           const projectImageUrl = urlFor(project.image)?.width(width).height(height).url() || "/404"
+          const blogURL = `/blog/${project.blogSlug}`
 
           return (
             <RecentProject
@@ -27,6 +28,7 @@ export default function FeaturedProjects({ projects, urlFor }: Props) {
               src={projectImageUrl}
               width={width}
               height={height}
+              blogURL={blogURL}
             />
           )
         })}
