@@ -9,7 +9,7 @@ import { BREAKPOINT_XS } from "@/utils/breakpoints"
 import PaginationControls from "@/components/PaginationControls"
 import PostContent from "./PostContent"
 
-export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?: SanityDocument[]; perPage?: number }) {
+export default function BlogSampleResults({ posts = [], perPage = 6 }: { posts?: SanityDocument[]; perPage?: number }) {
   const router = useRouter()
   const [selectedPost, setSelectedPost] = useState<SanityDocument | null>(posts[0])
   const [hoveredPost, setHoveredPost] = useState<string | null>(null)
@@ -123,7 +123,7 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
   }
 
   return (
-    <main className="w-full flex flex-col xs:flex-row bg-slate-100 relative  flex-1">
+    <main className="w-full flex flex-col xs:flex-row bg-slate-100 relative  flex-1 h-[calc(100vh-var(--dynamic-header-height))] min-h-fit">
       <div className="flex flex-col w-full xs:w-auto flex-1 bg-slate-100">
         {totalPages > 1 && (
           <PaginationControls currentPage={currentPage} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
@@ -159,15 +159,12 @@ export default function BlogSampleResults({ posts = [], perPage = 8 }: { posts?:
 
       <div className="hidden xs:flex w-2/3 relative">
         {selectedPost ? (
-          <div
-            className="w-full sticky self-start overflow-y-auto top-[var(--dynamic-header-height)] max-h-[calc(100vh-var(--dynamic-header-height))]"
-            ref={scrollableRef}
-          >
+          <div className="w-full sticky self-start overflow-y-scroll top-[var(--dynamic-header-height)] h-full" ref={scrollableRef}>
             <h1 className="pl-2 pt-2 text-4xl font-bold">{selectedPost?.title}</h1>
             <span className="pl-2 text-sm my-4 inline-block text-black text-opacity-50">
               Published: {new Date(selectedPost.publishedAt).toLocaleDateString("en-CA")}
             </span>
-            <div className="post-content flex flex-col gap-2 indent-8 pb-2 overflow-hidden">
+            <div className="post-content flex flex-col gap-2 indent-8 pb-2 overflow-hidden absolute">
               <PostContent body={selectedPost.body} />
             </div>
           </div>
