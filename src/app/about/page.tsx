@@ -20,7 +20,7 @@ export default function About() {
       <main className="grow flex flex-col justify-start bg-zinc-700">
         <section className="p-8 bg-slate-100 flex flex-col items-center">
           <h2 className="text-center text-3xl pb-8">About</h2>
-          <p className="max-w-[1000px] indent-6">
+          <p className="max-w-250 indent-6">
             I&apos;m Tyler Hartwell, a fullstack software developer. I have a background in mechanical engineering and decided to make the transition
             into software engineering where I find more freedom to exercise creative problem solving and make effective and enjoyable user
             experiences. Here, you can see some of the projects I&apos;ve worked on and learn about some of the problems I solved during their

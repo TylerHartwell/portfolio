@@ -20,7 +20,7 @@ export default function RecentProject({
 }) {
   return (
     <div className="grid grid-cols-[minmax(min-content,1fr)_1fr] items-stretch">
-      <div className="w-full min-w-[100px] border-transparent border-solid border-2 transition-all flex flex-col justify-center max-w-[400px] relative overflow-hidden hover:scale-105 hover:border-yellow-200 rounded-2xl bg-black">
+      <div className="w-full min-w-25 border-transparent border-solid border-2 transition-all flex flex-col justify-center max-w-100 relative overflow-hidden hover:scale-105 hover:border-yellow-200 rounded-2xl bg-black">
         <a href={url} target="_blank">
           <Image
             src={src}

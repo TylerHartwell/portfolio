@@ -53,14 +53,14 @@ export default async function Home() {
           <div className="flex flex-col gap-6 justify-start  items-center m-6  w-full">
             <IntroBlurb />
             <div className="flex flex-col lg:flex-row justify-center  w-full items-center">
-              <div className="flex flex-col gap-6  justify-start min-w-min items-center m-6 max-w-[500px]">
+              <div className="flex flex-col gap-6  justify-start min-w-min items-center m-6 max-w-125">
                 <TechMarquee />
                 <SocialLinks />
               </div>
-              <div className="relative w-full max-w-[800px] ">
+              <div className="relative w-full max-w-200 ">
                 <iframe
                   src="https://weather.tylerhartwell.com"
-                  className="border-0 [aspect-ratio:5/3] w-full"
+                  className="border-0 aspect-5/3 w-full"
                   loading="lazy"
                   title="Weather by Tyler Hartwell"
                 />

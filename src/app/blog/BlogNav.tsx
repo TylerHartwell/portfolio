@@ -14,14 +14,13 @@ export default async function BlogNav() {
   const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options)
 
   return (
-    <aside className="relative bg-neutral-200 w-full md:w-[200px]">
+    <aside className="relative bg-neutral-200 w-full md:w-50">
       <div className="absolute h-full w-full">
         <Image
           src="/images/forest.jpg"
           alt="bg-image"
           width={2560}
           height={1495}
-          priority
           sizes="(max-width: 768px) 300px, 1000px"
           className="object-cover h-full w-full"
         />

@@ -159,7 +159,7 @@ export default function BlogSampleResults({ posts = [], perPage = 6 }: { posts?:
 
       <div className="hidden xs:flex w-2/3 relative">
         {selectedPost ? (
-          <div className="w-full sticky self-start overflow-y-scroll top-[var(--dynamic-header-height)] h-full" ref={scrollableRef}>
+          <div className="w-full sticky self-start overflow-y-scroll top-(--dynamic-header-height) h-full" ref={scrollableRef}>
             <h1 className="pl-2 pt-2 text-4xl font-bold">{selectedPost?.title}</h1>
             <span className="pl-2 text-sm my-4 inline-block text-black text-opacity-50">
               Published: {new Date(selectedPost.publishedAt).toLocaleDateString("en-CA")}
