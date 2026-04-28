@@ -1,8 +1,7 @@
 import Image from "next/image"
 import { client } from "@/sanity/client"
 import { SanityDocument } from "next-sanity"
-import { SanityImageSource } from "@sanity/image-url/lib/types/types"
-import imageUrlBuilder from "@sanity/image-url"
+import { createImageUrlBuilder, type SanityImageSource } from "@sanity/image-url"
 import FeaturedProjects from "@/components/FeaturedProjects"
 import IntroBlurb from "@/components/IntroBlurb"
 import SocialLinks from "@/components/SocialLinks"
@@ -34,7 +33,7 @@ const PROJECTS_QUERY = `*[
 }`
 
 const { projectId, dataset } = client.config()
-const urlFor = (source: SanityImageSource) => (projectId && dataset ? imageUrlBuilder({ projectId, dataset }).image(source) : null)
+const urlFor = (source: SanityImageSource) => (projectId && dataset ? createImageUrlBuilder({ projectId, dataset }).image(source) : null)
 
 const options = { next: { revalidate: 30 } }
 

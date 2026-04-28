@@ -1,7 +1,6 @@
 import { SanityDocument } from "next-sanity"
 import RecentProject from "./RecentProject"
-import { SanityImageSource } from "@sanity/image-url/lib/types/types"
-import { ImageUrlBuilder } from "@sanity/image-url/lib/types/builder"
+import { type ImageUrlBuilder, type SanityImageSource } from "@sanity/image-url"
 
 interface Props {
   projects: SanityDocument[]
