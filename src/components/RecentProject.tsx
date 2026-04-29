@@ -38,7 +38,7 @@ export default function RecentProject({
           <a
             href={url}
             target="_blank"
-            className="text-[calc(100cqw/8)] grid place-items-center self-start font-bold hover:underline underline-offset-3 hover:opacity-90 ml-4 leading-none"
+            className="text-[12.5cqw] grid place-items-center self-start font-bold hover:underline underline-offset-3 hover:opacity-90 ml-4 leading-none"
           >
             {name}
           </a>

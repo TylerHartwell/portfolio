@@ -1,24 +1,32 @@
 export default function TechMarquee() {
-  const techStack = ["Git", "HTML", "CSS", "Javascript", "React", "Next.js", "Tailwind CSS", "TypeScript", "MongoDB", "Vercel"]
+  const techStack = [
+    { name: "React", color: "from-blue-50 to-blue-100 text-blue-700" },
+    { name: "Next.js", color: "from-gray-50 to-gray-100 text-gray-900" },
+    { name: "TypeScript", color: "from-blue-50 to-cyan-100 text-blue-700" },
+    { name: "Tailwind CSS", color: "from-cyan-50 to-blue-100 text-cyan-700" },
+    { name: "MongoDB", color: "from-green-50 to-emerald-100 text-green-700" },
+    { name: "Supabase", color: "from-green-200 to-emerald-100 text-green-700" },
+    { name: "Vercel", color: "from-gray-50 to-gray-100 text-gray-900" },
+    { name: "Git", color: "from-orange-50 to-red-100 text-orange-700" },
+    { name: "HTML/CSS", color: "from-amber-50 to-orange-100 text-amber-700" }
+  ]
 
   return (
-    <div className="relative w-100 max-w-screen text-stone-300">
-      <span className="absolute -top-full left-1/2 -translate-x-1/2">Technologies:</span>
-      <div className="flex mask-[linear-gradient(to_right,transparent,black_15%,black_85%,transparent_100%)] overflow-hidden group">
-        <div className="animate-marquee whitespace-nowrap group-hover:[animation-play-state:paused]">
-          {techStack.map((tech, index) => (
-            <span key={index} className="mx-2">
-              {tech}
-            </span>
-          ))}
-        </div>
-        <div className="animate-marquee whitespace-nowrap group-hover:[animation-play-state:paused]">
-          {techStack.map((tech, index) => (
-            <span key={index} className="mx-2">
-              {tech}
-            </span>
-          ))}
-        </div>
+    <div className="w-full py-8">
+      <div className="flex items-center gap-3 mb-6">
+        <h3 className="text-sm font-semibold text-gray-200 uppercase tracking-wide">Tech Stack</h3>
+        <div className="flex-1 h-px bg-linear-to-r from-blue-200 to-transparent"></div>
+      </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+        {techStack.map(tech => (
+          <div
+            key={tech.name}
+            className={`bg-linear-to-br ${tech.color} px-4 py-3 rounded-lg font-medium text-sm transition-all duration-300 hover:scale-105 cursor-default border border-white/50 antialiased will-change-transform`}
+          >
+            {tech.name}
+          </div>
+        ))}
       </div>
     </div>
   )
