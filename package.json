@@ -2,8 +2,10 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "npm@11.12.1",
   "engines": {
-    "node": ">=22.13.0"
+    "node": ">=24.14.0",
+    "npm": "11.12.1"
   },
   "overrides": {
     "js-yaml": "^4.1.1",

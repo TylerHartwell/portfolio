@@ -17,8 +17,14 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v5
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: npm
+
+      - name: Pin npm version
+        run: npm i -g npm@11.12.1
+
+      - name: Verify Node and npm
+        run: node -v && npm -v
 
       - name: Install dependencies
         run: npm ci
