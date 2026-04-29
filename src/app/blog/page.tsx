@@ -1,6 +1,15 @@
 import { type SanityDocument } from "next-sanity"
 import { client } from "@/sanity/client"
 import BlogSampleResults from "./BlogSampleResults"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Technical notes and project writeups from Tyler Hartwell.",
+  alternates: {
+    canonical: "/blog"
+  }
+}
 
 const POSTS_QUERY = `*[
   _type == "post"

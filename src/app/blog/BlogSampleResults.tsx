@@ -20,7 +20,10 @@ export default function BlogSampleResults({ posts = [], perPage = 6 }: { posts?:
 
   const scrollableRef = useRef<HTMLDivElement>(null)
 
-  const isHoverDevice = useRef<boolean>(false)
+  const [isHoverDevice] = useState(() => {
+    if (typeof window === "undefined") return false
+    return !window.matchMedia("(hover: none)").matches
+  })
   const [isNarrow, setIsNarrow] = useState(false)
 
   useEffect(() => {
@@ -34,13 +37,6 @@ export default function BlogSampleResults({ posts = [], perPage = 6 }: { posts?:
 
     return () => {
       window.removeEventListener("resize", checkIsNarrow)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const hoverMatchMedia = window.matchMedia("(hover: none)")
-      isHoverDevice.current = !hoverMatchMedia.matches
     }
   }, [])
 
@@ -109,7 +105,7 @@ export default function BlogSampleResults({ posts = [], perPage = 6 }: { posts?:
 
   const handlePointerEnter = (e: React.PointerEvent<HTMLAnchorElement>, post: SanityDocument) => {
     e.preventDefault()
-    if (isHoverDevice.current && e.pointerType !== "touch") {
+    if (isHoverDevice && e.pointerType !== "touch") {
       handleSelectPost(post)
       setHoveredPost(post._id)
     }
@@ -117,7 +113,7 @@ export default function BlogSampleResults({ posts = [], perPage = 6 }: { posts?:
 
   const handlePointerLeave = (e: React.PointerEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    if (isHoverDevice.current && e.pointerType !== "touch") {
+    if (isHoverDevice && e.pointerType !== "touch") {
       setHoveredPost(null)
     }
   }
@@ -131,7 +127,7 @@ export default function BlogSampleResults({ posts = [], perPage = 6 }: { posts?:
         {paginatedPosts.map(post => {
           const isSelected = selectedPost?._id === post._id
           const href = `/blog/${post.slug.current}`
-          const isHovered = isHoverDevice.current && hoveredPost === post._id
+          const isHovered = isHoverDevice && hoveredPost === post._id
 
           const highlight = isHovered || (isSelected && !isNarrow)
 

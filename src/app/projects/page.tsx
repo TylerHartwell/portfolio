@@ -3,6 +3,15 @@ import { client } from "@/sanity/client"
 import { createImageUrlBuilder, type SanityImageSource } from "@sanity/image-url"
 import { SanityDocument } from "next-sanity"
 import { Fragment } from "react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "A curated collection of software projects built by Tyler Hartwell.",
+  alternates: {
+    canonical: "/projects"
+  }
+}
 
 const PROJECTS_QUERY = `*[
   _type == "project"

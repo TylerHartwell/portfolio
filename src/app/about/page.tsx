@@ -2,6 +2,15 @@ import { FaReact, FaCss3Alt, FaGitAlt } from "react-icons/fa"
 import { TiHtml5 } from "react-icons/ti"
 import { RiTailwindCssFill, RiNextjsFill } from "react-icons/ri"
 import { SiExpress, SiJavascript } from "react-icons/si"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Background, experience, and core technologies used by Tyler Hartwell.",
+  alternates: {
+    canonical: "/about"
+  }
+}
 
 const techIcons = [
   { component: FaGitAlt, title: "Git Version Control" },

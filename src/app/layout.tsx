@@ -6,6 +6,7 @@ import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import ScrollToTop from "@/components/ScrollToTop"
 import { Inter } from "next/font/google"
+import { site } from "@/lib/site"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,8 +24,36 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Tyler Hartwell",
-  description: "Portfolio and Developer Blog"
+  metadataBase: new URL(site.url),
+  title: {
+    default: site.title,
+    template: "%s | Tyler Hartwell"
+  },
+  description: site.description,
+  alternates: {
+    canonical: "/"
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: site.title,
+    description: site.description,
+    siteName: site.name,
+    images: [
+      {
+        url: "/images/forest.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Tyler Hartwell portfolio"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+    images: ["/images/forest.jpg"]
+  }
 }
 
 export default function RootLayout({

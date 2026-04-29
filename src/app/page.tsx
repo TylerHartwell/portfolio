@@ -2,10 +2,19 @@ import Image from "next/image"
 import { client } from "@/sanity/client"
 import { SanityDocument } from "next-sanity"
 import { createImageUrlBuilder, type SanityImageSource } from "@sanity/image-url"
+import type { Metadata } from "next"
 import FeaturedProjects from "@/components/FeaturedProjects"
 import IntroBlurb from "@/components/IntroBlurb"
 import SocialLinks from "@/components/SocialLinks"
 import TechMarquee from "@/components/TechMarquee"
+
+export const metadata: Metadata = {
+  title: "Home",
+  description: "Portfolio home for Tyler Hartwell, featuring selected software projects and links to technical blog posts.",
+  alternates: {
+    canonical: "/"
+  }
+}
 
 const PROJECTS_QUERY = `*[
   _type == "project"
