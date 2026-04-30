@@ -18,11 +18,11 @@ export default function TechMarquee() {
         <div className="flex-1 h-px bg-linear-to-r from-blue-200 to-transparent"></div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div className="flex flex-wrap gap-3 justify-center">
         {techStack.map(tech => (
           <div
             key={tech.name}
-            className={`bg-linear-to-br ${tech.color} px-4 py-3 rounded-lg font-medium text-sm transition-all duration-300 hover:scale-105 cursor-default border border-white/50 antialiased will-change-transform`}
+            className={`bg-linear-to-br ${tech.color} size-20 rounded-lg font-medium text-sm flex items-center justify-center text-center transition-all duration-300 hover:scale-105 cursor-default border border-white/50 antialiased will-change-transform`}
           >
             {tech.name}
           </div>

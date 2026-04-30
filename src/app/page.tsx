@@ -60,10 +60,11 @@ export default async function Home() {
         <section id="home" className="relative mx-auto my-6 flex flex-col  gap-6  items-center  w-[90%] ">
           <div className="flex flex-col gap-6 justify-start  items-center m-6  w-full">
             <IntroBlurb />
+            <FeaturedProjects projects={projects} urlFor={urlFor} />
             <div className="flex flex-col lg:flex-row justify-center  w-full items-center">
               <div className="flex flex-col gap-6  justify-start min-w-min items-center m-6 max-w-125">
-                <TechMarquee />
                 <SocialLinks />
+                <TechMarquee />
               </div>
               <div className="relative w-full max-w-200 ">
                 <iframe
@@ -75,8 +76,6 @@ export default async function Home() {
               </div>
             </div>
           </div>
-
-          <FeaturedProjects projects={projects} urlFor={urlFor} />
         </section>
       </main>
     </>
