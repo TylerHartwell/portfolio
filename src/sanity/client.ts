@@ -1,13 +1,24 @@
 import { createClient } from "next-sanity"
 
 export function getSanityConfig(env: NodeJS.ProcessEnv = process.env) {
-  const useCdnFromEnv = env.SANITY_USE_CDN
+  const requiredVariables = [
+    "NEXT_PUBLIC_SANITY_PROJECT_ID",
+    "NEXT_PUBLIC_SANITY_DATASET",
+    "SANITY_API_VERSION",
+    "SANITY_USE_CDN"
+  ] as const
+
+  const missingVariables = requiredVariables.filter((name) => !env[name])
+
+  if (missingVariables.length > 0) {
+    throw new Error(`Missing required Sanity environment variables: ${missingVariables.join(", ")}`)
+  }
 
   return {
-    projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "uv1fpmpl",
-    dataset: env.NEXT_PUBLIC_SANITY_DATASET ?? "production",
-    apiVersion: env.SANITY_API_VERSION ?? "2024-01-01",
-    useCdn: typeof useCdnFromEnv === "string" ? useCdnFromEnv === "true" : env.NODE_ENV === "production"
+    projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    dataset: env.NEXT_PUBLIC_SANITY_DATASET,
+    apiVersion: env.SANITY_API_VERSION,
+    useCdn: env.SANITY_USE_CDN === "true"
   }
 }
 

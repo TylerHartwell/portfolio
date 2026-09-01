@@ -1,4 +1,12 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it, vi } from "vitest"
+
+vi.hoisted(() => {
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID = "test-project"
+  process.env.NEXT_PUBLIC_SANITY_DATASET = "test-dataset"
+  process.env.SANITY_API_VERSION = "2024-01-01"
+  process.env.SANITY_USE_CDN = "false"
+})
+
 import { getSanityConfig } from "@/sanity/client"
 
 describe("getSanityConfig", () => {
@@ -19,8 +27,7 @@ describe("getSanityConfig", () => {
     })
   })
 
-  it("falls back to production CDN behavior when no explicit flag is passed", () => {
-    const config = getSanityConfig({ NODE_ENV: "production" })
-    expect(config.useCdn).toBe(true)
+  it("throws when required configuration is missing", () => {
+    expect(() => getSanityConfig({ NODE_ENV: "production" })).toThrow("Missing required Sanity environment variables")
   })
 })
